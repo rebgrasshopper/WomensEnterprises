@@ -1,0 +1,17 @@
+.navbar-brand {
+    color: #fff;
+}
+
+.navlinks {
+    padding: 0px 15px 0px 15px;
+    border-left: 1px solid #fff;
+    color: #fff;
+}
+
+.navlinks a {
+    color: inherit;
+}
+
+.navlinks:first-of-type {
+    border-left: none;
+}
