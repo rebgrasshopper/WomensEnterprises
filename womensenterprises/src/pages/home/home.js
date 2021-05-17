@@ -32,7 +32,7 @@ export default function Home(){
             .get('http://localhost:4001/api/home')
             .then(response => {
                 console.log("Response Data:", response.data)
-                setHomeData(response.data)
+                setHomeData(response.data[0])
 
                 setLoading(false)
             })

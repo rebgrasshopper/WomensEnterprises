@@ -29,3 +29,15 @@ exports.createHomeData = async (req, res) => {
             res.json({ message: `There was an error creating home data`})
         })
 }
+
+exports.updateHomeData = async (req, res) => {
+    knex('home')
+  .where({ id: 1 })
+  .update(req.body)
+  .then(() => {
+      res.json({ message: 'home data updated' })
+  })
+  .catch(err => {
+      res.json({ message: 'There was an error updating home data' })
+  })
+}

@@ -12,6 +12,6 @@ export default function DisplayHome({homeData}) {
             </div>
             )
     } else {
-        return null;
+        return <div>still loading</div>;
     }
 }

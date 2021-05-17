@@ -9,4 +9,6 @@ router.get('/home', Routes.homeData);
 
 router.post('/createHome', Routes.createHomeData);
 
+router.put('/updateHome', Routes.updateHomeData);
+
 module.exports = router;
