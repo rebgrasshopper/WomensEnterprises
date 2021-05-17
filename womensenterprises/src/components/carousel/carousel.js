@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import './carousel.css';
 
@@ -27,7 +26,7 @@ export default function CarouselComponent({photos}){
                          <Carousel>
                             {photos.map(({photo, alt, caption}) => {
                                 return (
-                                    <Carousel.Item style={{'height':"650px", 'objectFit':"cover"}} >
+                                    <Carousel.Item style={{'height':"650px", 'objectFit':"cover"}} key={photo}>
                                         <img style={{'height':"650px", 'objectFit':"cover"}} className="d-block w-100" src={photo} alt={alt}></img>
                                         <Carousel.Caption className="text-left">
                                             <h3>{caption}</h3>
