@@ -1,6 +1,10 @@
 import React from "react";
 import axios from 'axios';
+import Images from '../../components/imageLoader/imageLoader';
+
 export default function Form() {
+
+    console.log(Images[0].default);
 
     const [formState, setFormState] = React.useState({
         recentMessageTitle: "",
