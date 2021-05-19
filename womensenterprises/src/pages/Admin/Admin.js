@@ -19,8 +19,54 @@ export default function Form() {
             results:""
         },
         About: {
-
+            missionTitle: "",
+            mission: "",
+            founderTitle: "",
+            founderAbout: "",
+            founderImgUrl: "",
+            communityPartnersLinkText: "",
+            moreDetailsTitle: "",
+            moreDetails: "",
+            governmentVendingLinkText: "",
         },
+        CommunityPartners: {
+            pageTitle: "",
+            endBlurb: "",
+            contactLinkText: "",
+        },
+        CommunityPartnersList: [
+            {
+                orgName: "",
+                orgUrl: "",
+                orgImgLink: "",
+                orgBlurb: "",
+            }
+        ],
+        GovernmentVending: {
+            pageTitle: "",
+            aboutVending: "",
+            productsIntro: "",
+            productsOutro: "",
+            contactLinkText: "",
+        },
+        ProductList: [
+            {
+                prodName: "",
+                prodImgLink: "",
+                prodBlurb: "",
+                prodPrice10: "",
+                prodPrice50: "",
+                prodPrice100: "",
+                prodPrice500: "",
+                prodPrice1000: "",
+            }
+        ],
+        Contact: {
+            email: "",
+            phone: "",
+            facebook: "",
+            instagram: "",
+        }
     })
 
     function handleChange(evt) {
@@ -49,10 +95,11 @@ export default function Form() {
 
     function handleSubmit(evt) {
         evt.preventDefault();
-        console.log("EVENT TARGET:", evt.target.id)
+        const target = evt.target.id;
         console.log(formState)
         handleDataUpdate(evt.target.id);
-        // handleDataCreate();
+        
+        // handleDataCreate(evt.target.id);
     }   
 
     function handleDataCreate(target) {
@@ -65,56 +112,75 @@ export default function Form() {
     }
 
     const fetchData = async () => {
+        const falseForm = formState;
         axios
             .get('http://localhost:4001/api/home')
             .then(response => {
-                console.log("Response Data:", response.data)
-                setFormState({
-                    ...formState,
-                    Home: response.data[0]
-                })
+                if (response.data[0]) {
+                    console.log("Response Data:", response.data);
+                    falseForm.Home = response.data[0];
+                }
+                axios
+                    .get('http://localhost:4001/api/about')
+                    .then(response => {
+                        if (response.data[0]) {
+                            console.log("Response Data:", response.data);
+                            falseForm.About = response.data[0];
+                        }
+                        axios
+                            .get('http://localhost:4001/api/communityPartners')
+                            .then(response => {
+                                if (response.data[0]) {
+                                    console.log("Response Data:", response.data);
+                                    falseForm.CommunityPartners = response.data[0];
+                                }
+                                axios
+                                    .get('http://localhost:4001/api/governmentVending')
+                                    .then(response => {
+                                        if (response.data[0]) {
+                                            console.log("Response Data:", response.data);
+                                            falseForm.GovernmentVending = response.data[0];
+                                        }
+                                        axios
+                                            .get('http://localhost:4001/api/contact')
+                                            .then(response => {
+                                                if (response.data[0]) {
+                                                    console.log("Response Data:", response.data);
+                                                    falseForm.Contact = response.data[0];
+                                                }
+                                                axios
+                                                .get('http://localhost:4001/api/communityPartnersList')
+                                                    .then(response => {
+                                                        if (response.data[0]) {
+                                                            console.log("Response Data:", response.data);
+                                                            falseForm.CommunityPartnersList = response.data;
+                                                        }
+                                                        axios
+                                                        .get('http://localhost:4001/api/productList')
+                                                            .then(response => {
+                                                                if (response.data[0]) {
+                                                                    console.log("Response Data:", response.data);
+                                                                    falseForm.ProductList = response.data;
+                                                                }
+                                                                setFormState(falseForm)
+                                                            })
+                                                            .catch(error => console.error(`There was an error retrieving home data: ${error}`))
+                                                    })
+                                                    .catch(error => console.error(`There was an error retrieving home data: ${error}`))
+                                            })
+                                            .catch(error => console.error(`There was an error retrieving home data: ${error}`))
+                                    })
+                                    .catch(error => console.error(`There was an error retrieving home data: ${error}`))
+                            })
+                            .catch(error => console.error(`There was an error retrieving home data: ${error}`))
+                    })
+                    .catch(error => console.error(`There was an error retrieving home data: ${error}`))
             })
             .catch(error => console.error(`There was an error retrieving home data: ${error}`))
-        // axios
-        //     .get('http://localhost:4001/api/about')
-        //     .then(response => {
-        //         console.log("Response Data:", response.data)
-        //         setFormState({
-        //             ...formState,
-        //             About: response.data[0]
-        //         })
-        //     })
-        //     .catch(error => console.error(`There was an error retrieving home data: ${error}`))
-        // axios
-        //     .get('http://localhost:4001/api/communityPartners')
-        //     .then(response => {
-        //         console.log("Response Data:", response.data)
-        //         setFormState({
-        //             ...formState,
-        //             CommunityPartners: response.data[0]
-        //         })
-        //     })
-        //     .catch(error => console.error(`There was an error retrieving home data: ${error}`))
-        // axios
-        //     .get('http://localhost:4001/api/governmentVending')
-        //     .then(response => {
-        //         console.log("Response Data:", response.data)
-        //         setFormState({
-        //             ...formState,
-        //             GovernmentVending: response.data[0]
-        //         })
-        //     })
-        //     .catch(error => console.error(`There was an error retrieving home data: ${error}`))
-        // axios
-        //     .get('http://localhost:4001/api/contact')
-        //     .then(response => {
-        //         console.log("Response Data:", response.data)
-        //         setFormState({
-        //             ...formState,
-        //             Contact: response.data[0]
-        //         })
-        //     })
-        //     .catch(error => console.error(`There was an error retrieving home data: ${error}`))
+        
+
+
+
     }
 
     function handleDataUpdate(target) {
@@ -127,11 +193,21 @@ export default function Form() {
             .catch(error => console.error(`There was an error updating the data: ${error}`))
     }
 
+    function handleListItemCreation(target) {
+        // axios
+        //     .post(`http://localhost:4001/api/update${target}`,)
+    }
+
 
     React.useEffect(() => {
         fetchData()
         console.log(formState)
     }, [])
+
+
+    React.useEffect(()=>{
+        console.log("FORM STATE:", formState)
+    }, [formState])
 
     return (
         <div>

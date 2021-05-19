@@ -4,7 +4,7 @@ import AdminForm from '../AdminForm/AdminForm';
 
 export default function AdminNav({ handleSubmit, handleChange, formState }) {
 
-    const [page, setPage] = useState("Home");
+    const [page, setPage] = useState("SelectPage");
 
     function handlePageChoice(e){
         setPage(e.target.value)
@@ -15,10 +15,13 @@ export default function AdminNav({ handleSubmit, handleChange, formState }) {
             <div id="formChoiceDiv">
                 <label htmlFor="navSelect">Choose page to edit:</label>
                 <select name="navSelect" onChange = {handlePageChoice}>
+                    <option value = "SelectPage">Select a Page</option>
                     <option value = "Home">Home</option>
                     <option value = "About">About</option>
                     <option value = "Community Partners">Community Partners</option>
+                    <option value = "CommunityPartnersList">List of Community Partners</option>
                     <option value = "Government Vending">Government Vending</option>
+                    <option value = "ProductList">List of Products</option>
                     <option value = "Contact">Contact</option>
                 </select>
             </div>

@@ -17,6 +17,7 @@ exports.homeData = async (req, res) => {
         .select('*')
         .from('home')
         .then(homeContents => {
+            console.log("homeContents:", homeContents)
             res.json(homeContents)
         })
         .catch(err => {
@@ -29,6 +30,7 @@ exports.aboutData = async (req, res) => {
         .select('*')
         .from('about')
         .then(aboutContents => {
+            console.log("aboutContents:", aboutContents)
             res.json(aboutContents)
         })
         .catch(err => {
@@ -41,6 +43,7 @@ exports.communityPartnersData = async (req, res) => {
         .select('*')
         .from('communityPartners')
         .then(communityPartnersContents => {
+            console.log("communityPartnersContents:", communityPartnersContents)
             res.json(communityPartnersContents)
         })
         .catch(err => {
@@ -53,6 +56,7 @@ exports.communityPartnersListData = async (req, res) => {
         .select('*')
         .from('communityPartnersList')
         .then(communityPartnersListContents => {
+            console.log("communityPartnersListContents:", communityPartnersListContents)
             res.json(communityPartnersListContents)
         })
         .catch(err => {
@@ -65,6 +69,7 @@ exports.governmentVendingData = async (req, res) => {
         .select('*')
         .from('governmentVending')
         .then(governmentVendingContents => {
+            console.log("governmentVendingContents:", governmentVendingContents)
             res.json(governmentVendingContents)
         })
         .catch(err => {
@@ -77,6 +82,7 @@ exports.productListData = async (req, res) => {
         .select('*')
         .from('ProductList')
         .then(ProductListContents => {
+            console.log("ProductListContents:", ProductListContents)
             res.json(ProductListContents)
         })
         .catch(err => {
@@ -89,6 +95,7 @@ exports.contactData = async (req, res) => {
         .select('*')
         .from('contact')
         .then(contactContents => {
+            console.log("contactContents:", contactContents)
             res.json(contactContents)
         })
         .catch(err => {
