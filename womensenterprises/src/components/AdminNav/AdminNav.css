@@ -1,0 +1,9 @@
+#formChoiceDiv {
+    margin-bottom: 30px;
+    background-color: #777;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+}

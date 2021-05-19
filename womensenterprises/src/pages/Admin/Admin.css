@@ -1,0 +1,18 @@
+#adminDiv {
+    margin: 70px auto 70px auto;
+    text-align: center;
+    max-width: fit-content;
+}
+
+#adminDiv label {
+    display: flex;
+    justify-content: space-between;
+}
+
+#adminDiv label input, #adminDiv label textarea {
+    margin-left: 10px;
+}
+
+#adminDiv label input {
+    width: 74%;
+}

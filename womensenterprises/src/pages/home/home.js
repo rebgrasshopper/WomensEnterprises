@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Nav from '../../components/nav/nav';
 import { useEffect, useState } from 'react';
 import CarouselComponent from "../../components/carousel/carousel";
 import pic1 from '../../images/Landing/pexels-andrea-piacquadio-cropped.jpg';
@@ -6,6 +7,7 @@ import pic2 from '../../images/Landing/pexels-anna-tarazevich-cropped.jpg';
 import pic3 from '../../images/Landing/pexels-matheus-bertelli-cropped.jpg';
 import pic4 from '../../images/Landing/pexels-rfstudio-cropped.jpg';
 import DisplayHome from '../../components/displayHome/displayHome';
+import './home.css';
 
 export default function Home(){
 
@@ -48,9 +50,13 @@ export default function Home(){
     console.log("loading from home.js:", loading)
     return (
         <div>
-            <CarouselComponent photos={photos} />
-            {loading ? <div>Loading</div> : <DisplayHome homeData = {homeData}/>}
+            <Nav></Nav>
             
+            <div id="homepage">
+                <CarouselComponent photos={photos} />
+                <DisplayHome homeData = {homeData} />
+                
+            </div>
         </div>
         )
 }

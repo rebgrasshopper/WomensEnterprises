@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
+import Logo from '../../images/WElogo.png';
 import './nav.css';
 
 export default function Nav() {
@@ -11,21 +12,20 @@ export default function Nav() {
         setPath(pathID);
     }, [])
 
-
     return ( 
 
 
-        <nav className="navbar bg-dark navbar-fixed-top">
+        <nav className="navbar navbar-fixed-top">
         <div className="container-fluid">
             <div className="navbar-header">
-                <a className="navbar-brand" href="/">Women's Enterprises International</a>
+                <a className="navbar-brand" href="/"><img src={Logo} alt="Women's Enterprises Logo"></img></a>
             </div>
             <ul className="nav navbar-nav d-flex flex-row">
-                <li className="navlinks"><Link id = "homeLink" className = { path === "/" ? "nav-link" : "nav-link" } to = { process.env.PUBLIC_URL + "/" } > Home </Link></li>
-                <li className="navlinks"><Link id = "aboutLink" className = { path === "/About" ? "nav-link" : "nav-link" } to = { process.env.PUBLIC_URL + "/About" } > About </Link> </li>
-                <li className="navlinks"><Link id = "communityPartnersLink" className = { path === "/CommunityPartners" ? "nav-link" : "nav-link" } to = { process.env.PUBLIC_URL + "/CommunityPartners" } > Community Partners </Link></li>
-                <li className="navlinks"><Link id = "governmentVendingLink" className = { path === "/GovernmentVending" ? "nav-link" : "nav-link" } to = { process.env.PUBLIC_URL + "/GovernmentVending" } > Government Vending </Link> </li>
-                <li className="navlinks"><Link id = "contactLink" className = { path === "/Contact" ? "nav-link" : "nav-link" } to = { process.env.PUBLIC_URL + "/Contact" } > Contact </Link> </li>
+                <li className={ path === "/" ? "navlinks active" : "navlinks" }><Link id = "homeLink" className = "nav-link" to = { process.env.PUBLIC_URL + "/" }> Home </Link></li>
+                <li className={ path === "/About" ? "navlinks active" : "navlinks" }><Link id = "aboutLink" className = "nav-link" to = { process.env.PUBLIC_URL + "/About" }> About </Link> </li>
+                <li className={ path === "/CommunityPartners" ? "navlinks active" : "navlinks" }><Link id = "communityPartnersLink" className ="nav-link" to = { process.env.PUBLIC_URL + "/CommunityPartners" } > Community Partners </Link></li>
+                <li className={ path === "/GovernmentVending" ? "navlinks active" : "navlinks" }><Link id = "governmentVendingLink" className ="nav-link" to = { process.env.PUBLIC_URL + "/GovernmentVending" } > Government Vending </Link> </li>
+                <li className={ path === "/Contact" ? "navlinks active" : "navlinks" }><Link id = "contactLink" className ="nav-link" to = { process.env.PUBLIC_URL + "/Contact" } > Contact </Link> </li>
             </ul>
         </div>
     </nav>

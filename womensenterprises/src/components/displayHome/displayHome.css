@@ -1,0 +1,28 @@
+#displayHome {
+    margin: 0px 15px 0px 15px;
+    padding: 50px;
+    text-align: center;
+    background-color: antiquewhite;
+    
+}
+
+.textDiv {
+    margin: 0px 200px 0px 200px;
+    padding: 85px 45px 85px 45px;
+    border-bottom: 1px solid #444;
+    border-top: 1px solid #444;
+    background-color: rgb(253, 245, 234);
+}
+
+.textDiv:last-of-type, .textDiv:first-of-type {
+    background-color: antiquewhite;
+    border: none;
+}
+
+.textH1 {
+    text-decoration: underline;
+}
+
+.textContent {
+    margin-top: 20px;
+}

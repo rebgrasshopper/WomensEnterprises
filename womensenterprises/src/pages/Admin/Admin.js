@@ -1,33 +1,57 @@
 import React from "react";
 import axios from 'axios';
+import Nav from '../../components/nav/nav'
 import Images from '../../components/imageLoader/imageLoader';
+import './Admin.css';
+import AdminNav from '../../components/AdminNav/AdminNav';
 
 export default function Form() {
 
-    console.log(Images[0].default);
+    // console.log(Images[0].default);
 
     const [formState, setFormState] = React.useState({
-        recentMessageTitle: "",
-        recentMessage: "",
-        missionTitle: "",
-        mission:"",
-        resultsTitle:"",
-        results:""
+        Home: {
+            recentMessageTitle: "",
+            recentMessage: "",
+            missionTitle: "",
+            mission:"",
+            resultsTitle:"",
+            results:""
+        },
+        About: {
+
+        },
     })
 
     function handleChange(evt) {
+        console.log("formState:", formState)
+        const formId = evt.target.dataset.form;
+        const fieldName = evt.target.name
         const value = evt.target.value;
+        console.log("Targeting", formId)
+        let falseObject = {
+            ...formState,
+            [formId]: {
+                ...formState[formId],
+                [fieldName]: value
+            }
+        }
         setFormState({
             ...formState,
-            [evt.target.name]: value
+            [formId]: {
+                ...formState[formId],
+                [fieldName]: value
+            }
         });
+        console.log("falseFormState:", falseObject);
     }
 
 
     function handleSubmit(evt) {
         evt.preventDefault();
+        console.log("EVENT TARGET:", evt.target.id)
         console.log(formState)
-        handleDataUpdate();
+        handleDataUpdate(evt.target.id);
         // handleDataCreate();
     }   
 
@@ -52,21 +76,17 @@ export default function Form() {
             .get('http://localhost:4001/api/home')
             .then(response => {
                 console.log("Response Data:", response.data)
-                setFormState(response.data[0])
+                setFormState({
+                    ...formState,
+                    Home: response.data[0]
+                })
             })
             .catch(error => console.error(`There was an error retrieving data: ${error}`))
     }
 
-    function handleDataUpdate() {
+    function handleDataUpdate(target) {
         axios
-            .put('http://localhost:4001/api/updateHome', {
-                recentMessageTitle: formState.recentMessageTitle,
-                recentMessage: formState.recentMessage,
-                missionTitle: formState.missionTitle,
-                mission: formState.mission,
-                resultsTitle: formState.resultsTitle,
-                results: formState.results
-            })
+            .put(`http://localhost:4001/api/update${target}`, formState[target])
             .then(res => {
                 console.log('data updated: ', res.data)
                 fetchData();
@@ -81,62 +101,13 @@ export default function Form() {
     }, [])
 
     return (
-        <form onSubmit={handleSubmit}>
-        <label>
-            What's going on with WE? Title: 
-            <input
-            type="text"
-            name="recentMessageTitle"
-            value={formState.recentMessageTitle}
-            onChange={handleChange}
-            ></input>
-        </label><br></br>
-        <label>
-            What's going on with WE? Text: 
-            <input
-            type="text"
-            name="recentMessage"
-            value={formState.recentMessage}
-            onChange={handleChange}
-            ></input>
-        </label><br></br>
-        <label>
-            Landing Page Mission Title: 
-            <input
-            type="text"
-            name="missionTitle"
-            value={formState.missionTitle}
-            onChange={handleChange}
-            ></input>
-        </label><br></br>
-        <label>
-            Landing Page Mission Text: 
-            <input
-            type="text"
-            name="mission"
-            value={formState.mission}
-            onChange={handleChange}
-            ></input>
-        </label><br></br>
-        <label>
-            Landing Page Results Title: 
-            <input
-            type="text"
-            name="resultsTitle"
-            value={formState.resultsTitle}
-            onChange={handleChange}
-            ></input>
-        </label><br></br>
-        <label>
-            Landing Page Results Text: 
-            <input
-            type="text"
-            name="results"
-            value={formState.results}
-            onChange={handleChange}
-            ></input>
-        </label><br></br>
-        <button type="submit">Submit</button>
-        </form>
+        <div>
+            <Nav />
+            
+            <div id="adminDiv">
+                <AdminNav handleSubmit = {handleSubmit} handleChange = {handleChange} formState = {formState} />
+            </div>
+            
+        </div>
     );
 }
