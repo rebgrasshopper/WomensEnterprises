@@ -1,5 +1,5 @@
 import './AdminNav.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import AdminForm from '../AdminForm/AdminForm';
 
 export default function AdminNav({ handleSubmit, handleChange, formState }) {

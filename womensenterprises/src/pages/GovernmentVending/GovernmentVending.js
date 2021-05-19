@@ -1,13 +1,41 @@
 import Nav from '../../components/nav/nav';
+import DisplayGovernmentVending from "../../components/DisplayGovernmentVending/DisplayGovernmentVending";
+import axios from 'axios';
+import {useEffect, useState} from 'react';
 
 export default function GovernmentVending(){
+
+
+    const [ GovernmentVendingData, setGovernmentVendingData ] = useState({})
+
+
+    const fetchData = async () => {
+        axios
+            .get('http://localhost:4001/api/governmentVending')
+            .then(response => {
+                console.log("Response Data:", response.data[0])
+                setGovernmentVendingData(response.data[0])
+            })
+            .catch(error => console.error(`There was an error retrieving data: ${error}`))
+    }
+
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    useEffect(()=>{
+        console.log("GovernmentVendingData:", GovernmentVendingData)
+    }, [GovernmentVendingData])
+
+
+
+
+
     return (
         <div>
             <Nav />
-            
-            <div id="governmentVendingDiv">
-                Government Vending
-            </div>
+            <DisplayGovernmentVending GovernmentVendingData = {GovernmentVendingData}/>
         </div>
     )
 }

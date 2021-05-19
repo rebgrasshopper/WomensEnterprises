@@ -6,19 +6,8 @@ import {useEffect, useState} from 'react';
 export default function CommunityPartners(){
 
 
-    const [ CommunityPartnersData, setCommunityPartnersData ] = useState({
-        missionTitle: "",
-        mission: "",
-        founderTitle: "",
-        founderAbout: "",
-        founderImgUrl: "",
-        communityPartnersLinkText: "",
-        moreDetailsTitle: "",
-        moreDetails: "",
-        governmentVendingLinkText: "",
-    })
+    const [ CommunityPartnersData, setCommunityPartnersData ] = useState({})
 
-    const [ loading, setLoading ] = useState(true);
 
     const fetchData = async () => {
         axios
@@ -26,7 +15,6 @@ export default function CommunityPartners(){
             .then(response => {
                 console.log("Response Data:", response.data[0])
                 setCommunityPartnersData(response.data[0])
-                setLoading(false)
             })
             .catch(error => console.error(`There was an error retrieving data: ${error}`))
     }

@@ -7,7 +7,7 @@ import AdminNav from '../../components/AdminNav/AdminNav';
 
 export default function Form() {
 
-    // console.log(Images[0].default);
+    console.log(Images[0].default);
 
     const [formState, setFormState] = React.useState({
         Home: {
@@ -97,19 +97,19 @@ export default function Form() {
         evt.preventDefault();
         const target = evt.target.id;
         console.log(formState)
-        handleDataUpdate(evt.target.id);
+        handleDataUpdate(target);
         
-        // handleDataCreate(evt.target.id);
+        // handleDataCreate(target);
     }   
 
-    function handleDataCreate(target) {
-        axios
-            .post(`http://localhost:4001/api/create${target}`, formState[target])
-            .then(res => {
-                console.log(res.data)
-            })
-            .catch(error => console.error(`There was an error creating the data`))
-    }
+    // function handleDataCreate(target) {
+    //     axios
+    //         .post(`http://localhost:4001/api/create${target}`, formState[target])
+    //         .then(res => {
+    //             console.log(res.data)
+    //         })
+    //         .catch(error => console.error(`There was an error creating the data`))
+    // }
 
     const fetchData = async () => {
         const falseForm = formState;
@@ -193,21 +193,15 @@ export default function Form() {
             .catch(error => console.error(`There was an error updating the data: ${error}`))
     }
 
-    function handleListItemCreation(target) {
-        // axios
-        //     .post(`http://localhost:4001/api/update${target}`,)
-    }
+    // function handleListItemCreation(target) {
+    //     // axios
+    //     //     .post(`http://localhost:4001/api/update${target}`,)
+    // }
 
 
     React.useEffect(() => {
         fetchData()
-        console.log(formState)
     }, [])
-
-
-    React.useEffect(()=>{
-        console.log("FORM STATE:", formState)
-    }, [formState])
 
     return (
         <div>

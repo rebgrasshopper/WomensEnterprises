@@ -18,7 +18,6 @@ export default function About(){
         governmentVendingLinkText: "",
     })
 
-    const [ loading, setLoading ] = useState(true);
 
     const fetchData = async () => {
         axios
@@ -26,7 +25,6 @@ export default function About(){
             .then(response => {
                 console.log("Response Data:", response.data[0])
                 setAboutData(response.data[0])
-                setLoading(false)
             })
             .catch(error => console.error(`There was an error retrieving data: ${error}`))
     }

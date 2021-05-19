@@ -13,7 +13,7 @@ export default function DisplayAbout({aboutData}) {
                 <div className="aboutDivText">
                     <h1 className="textH1">{aboutData.founderTitle}</h1>
                     <div id="aboutFounderDiv">
-                        <img src={aboutData.founderImgUrl} alt="Photo of Dolly Duff, Founder"></img>
+                        <img src={aboutData.founderImgUrl} alt="Dolly Duff, Founder"></img>
                         <div className="textContent">{aboutData.founderAbout}</div>
                     </div>
                 </div>
