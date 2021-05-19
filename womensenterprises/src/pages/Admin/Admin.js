@@ -55,16 +55,9 @@ export default function Form() {
         // handleDataCreate();
     }   
 
-    function handleDataCreate() {
+    function handleDataCreate(target) {
         axios
-            .post('http://localhost:4001/api/createHome', {
-                recentMessageTitle: formState.recentMessageTitle,
-                recentMessage: formState.recentMessage,
-                missionTitle: formState.missionTitle,
-                mission: formState.mission,
-                resultsTitle: formState.resultsTitle,
-                results: formState.results
-            })
+            .post(`http://localhost:4001/api/create${target}`, formState[target])
             .then(res => {
                 console.log(res.data)
             })
@@ -81,7 +74,47 @@ export default function Form() {
                     Home: response.data[0]
                 })
             })
-            .catch(error => console.error(`There was an error retrieving data: ${error}`))
+            .catch(error => console.error(`There was an error retrieving home data: ${error}`))
+        // axios
+        //     .get('http://localhost:4001/api/about')
+        //     .then(response => {
+        //         console.log("Response Data:", response.data)
+        //         setFormState({
+        //             ...formState,
+        //             About: response.data[0]
+        //         })
+        //     })
+        //     .catch(error => console.error(`There was an error retrieving home data: ${error}`))
+        // axios
+        //     .get('http://localhost:4001/api/communityPartners')
+        //     .then(response => {
+        //         console.log("Response Data:", response.data)
+        //         setFormState({
+        //             ...formState,
+        //             CommunityPartners: response.data[0]
+        //         })
+        //     })
+        //     .catch(error => console.error(`There was an error retrieving home data: ${error}`))
+        // axios
+        //     .get('http://localhost:4001/api/governmentVending')
+        //     .then(response => {
+        //         console.log("Response Data:", response.data)
+        //         setFormState({
+        //             ...formState,
+        //             GovernmentVending: response.data[0]
+        //         })
+        //     })
+        //     .catch(error => console.error(`There was an error retrieving home data: ${error}`))
+        // axios
+        //     .get('http://localhost:4001/api/contact')
+        //     .then(response => {
+        //         console.log("Response Data:", response.data)
+        //         setFormState({
+        //             ...formState,
+        //             Contact: response.data[0]
+        //         })
+        //     })
+        //     .catch(error => console.error(`There was an error retrieving home data: ${error}`))
     }
 
     function handleDataUpdate(target) {
@@ -107,7 +140,7 @@ export default function Form() {
             <div id="adminDiv">
                 <AdminNav handleSubmit = {handleSubmit} handleChange = {handleChange} formState = {formState} />
             </div>
-            
+
         </div>
     );
 }
