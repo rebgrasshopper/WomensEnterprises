@@ -23,9 +23,9 @@ export default function Nav() {
             <ul className="nav navbar-nav d-flex flex-row">
                 <li className={ path === "/" ? "navlinks active" : "navlinks" }><Link id = "homeLink" className = "nav-link" to = { process.env.PUBLIC_URL + "/" }> Home </Link></li>
                 <li className={ path === "/About" ? "navlinks active" : "navlinks" }><Link id = "aboutLink" className = "nav-link" to = { process.env.PUBLIC_URL + "/About" }> About </Link> </li>
-                <li className={ path === "/CommunityPartners" ? "navlinks active" : "navlinks" }><Link id = "communityPartnersLink" className ="nav-link" to = { process.env.PUBLIC_URL + "/CommunityPartners" } > Community Partners </Link></li>
-                <li className={ path === "/GovernmentVending" ? "navlinks active" : "navlinks" }><Link id = "governmentVendingLink" className ="nav-link" to = { process.env.PUBLIC_URL + "/GovernmentVending" } > Government Vending </Link> </li>
-                <li className={ path === "/Contact" ? "navlinks active" : "navlinks" }><Link id = "contactLink" className ="nav-link" to = { process.env.PUBLIC_URL + "/Contact" } > Contact </Link> </li>
+                <li className={ path === "/CommunityPartners" ? "navlinks active" : "navlinks" }><Link id = "communityPartnersLink" className = "nav-link" to = { process.env.PUBLIC_URL + "/CommunityPartners" } > Community Partners </Link></li>
+                <li className={ path === "/GovernmentVending" ? "navlinks active" : "navlinks" }><Link id = "governmentVendingLink" className = "nav-link" to = { process.env.PUBLIC_URL + "/GovernmentVending" } > Government Vending </Link> </li>
+                <li className={ path === "/Contact" ? "navlinks active" : "navlinks" }><Link id = "contactLink" className = "nav-link" to = { process.env.PUBLIC_URL + "/Contact" } > Contact </Link> </li>
             </ul>
         </div>
     </nav>

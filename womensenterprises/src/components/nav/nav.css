@@ -7,18 +7,16 @@
     color: #fff;
 }
 
-.navlinks {
-    padding: 0px 15px 0px 15px;
-    color: #fff;
-}
-
 .navlinks:hover {
     border: 1px #fff solid;
     background-color: #555;
 }
 
-.navlinks a {
-    color: inherit;
+.nav-link {
+    padding: 10px 25px 10px 25px !important;
+    color: #fff !important;
+    height: 100%;
+    width: 100%;
 }
 
 .active {
