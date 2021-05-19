@@ -6,7 +6,7 @@ import pic1 from '../../images/Landing/pexels-andrea-piacquadio-cropped.jpg';
 import pic2 from '../../images/Landing/pexels-anna-tarazevich-cropped.jpg';
 import pic3 from '../../images/Landing/pexels-matheus-bertelli-cropped.jpg';
 import pic4 from '../../images/Landing/pexels-rfstudio-cropped.jpg';
-import DisplayHome from '../../components/displayHome/displayHome';
+import DisplayHome from '../../components/DisplayHome/DisplayHome';
 import './home.css';
 
 export default function Home(){
