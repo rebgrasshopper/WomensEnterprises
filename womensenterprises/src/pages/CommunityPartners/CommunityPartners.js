@@ -33,7 +33,7 @@ export default function CommunityPartners(){
 
 
     return (
-        <div>
+        <div className="main">
             <Nav />
             <DisplayCommunityPartners CommunityPartnersData = {CommunityPartnersData}/>
         </div>

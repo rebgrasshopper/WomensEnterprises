@@ -49,7 +49,7 @@ export default function Home(){
     console.log("Home Data from home.js: ", homeData)
     console.log("loading from home.js:", loading)
     return (
-        <div>
+        <div className="main">
             <Nav></Nav>
             
             <div id="homepage">

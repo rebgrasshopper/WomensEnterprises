@@ -7,10 +7,10 @@ export default function DisplayContact({ContactData}) {
     if (ContactData) {
         return (
             <div id="DisplayContact">
-                 <div className="Jumbotron">
+                 <div className="jumbotron contactJumbo">
                     <h1 className="textH1">Get In Touch!</h1>
                 </div>
-                <div className="ContactButtons">
+                <div className="contactButtons">
                     <div className="emailButton">
                     <Link to='#' onClick={(e) => {window.location = `mailto:${ContactData.email}`}}>
                         <img className = "contactIcon" src={EmailIcon} alt="envelope icon"></img>

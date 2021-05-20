@@ -33,7 +33,7 @@ export default function GovernmentVending(){
 
 
     return (
-        <div>
+        <div className="main">
             <Nav />
             <DisplayGovernmentVending GovernmentVendingData = {GovernmentVendingData}/>
         </div>

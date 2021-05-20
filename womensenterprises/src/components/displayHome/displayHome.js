@@ -7,15 +7,21 @@ export default function DisplayHome({homeData}) {
             <div id="displayHome">
                 <div className="textDiv">
                     <h1 className="textH1">{homeData.recentMessageTitle}</h1>
-                    <div className="textContent">{homeData.recentMessage}</div>
+                    {homeData.recentMessage.split("\n").map((element, index) => {
+                        return <div className = "textContent" key={index}>{element}</div>
+                    })}
                 </div>
                  <div className="textDiv">
                     <h1 className="textH1">{homeData.missionTitle}</h1>
-                    <div className="textContent">{homeData.mission}</div>
+                    {homeData.mission.split("\n").map((element, index) => {
+                        return <div className = "textContent" key={index}>{element}</div>
+                    })}
                 </div>
                 <div className="textDiv">
                     <h1 className="textH1">{homeData.resultsTitle}</h1>
-                    <div className="textContent">{homeData.results}</div>
+                    {homeData.results.split("\n").map((element, index) => {
+                        return <div className = "textContent" key={index}>{element}</div>
+                    })}
                 </div>
             </div>
             )

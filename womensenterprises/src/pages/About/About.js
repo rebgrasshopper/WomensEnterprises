@@ -3,6 +3,7 @@ import Nav from '../../components/nav/nav';
 import { useEffect, useState } from 'react';
 import DisplayAbout from '../../components/DisplayAbout/DisplayAbout';
 import './About.css';
+import Footer from "../../components/Footer/Footer";
 
 export default function About(){
 
@@ -40,10 +41,12 @@ export default function About(){
 
 
     return (
-        <div>
+        <div className="main">
             <Nav />
 
             <DisplayAbout aboutData={aboutData} />
+
+            <Footer />
         </div>
     )
 }

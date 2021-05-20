@@ -204,7 +204,7 @@ export default function Form() {
     }, [])
 
     return (
-        <div>
+        <div className="main">
             <Nav />
             
             <div id="adminDiv">

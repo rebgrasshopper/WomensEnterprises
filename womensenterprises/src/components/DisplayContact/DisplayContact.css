@@ -1,0 +1,27 @@
+#DisplayContact {
+    margin: 0px 15px 0px 15px;
+    padding: 0px;
+    text-align: center;
+    background-color: antiquewhite !important;
+    height: 80vh;
+}
+
+.contactJumbo {
+    padding-top: 50px !important;
+    margin-top: 0px !important;
+}
+
+.contactButtons {
+    margin: -68px 200px 0px 200px;
+    padding: 85px 45px 85px 45px;
+    background-color: rgb(253, 245, 234);
+}
+
+.emailButton {
+    width: 200px;
+    margin: auto;
+}
+
+.emailButton img {
+    max-width: 100%;
+}

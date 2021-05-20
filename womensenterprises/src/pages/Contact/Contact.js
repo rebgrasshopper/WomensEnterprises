@@ -32,7 +32,7 @@ export default function Contact(){
 
 
     return (
-        <div>
+        <div className="main">
             <Nav />
             <DisplayContact ContactData = {ContactData}/>
         </div>
