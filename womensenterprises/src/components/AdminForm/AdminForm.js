@@ -230,7 +230,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                         Organization URL: 
                         <input
                         type="text"
-                        name="orgURL"
+                        name="orgUrl"
                         data-form="CommunityPartnersList"
                         value={partner.orgUrl}
                         onChange={handleChange}

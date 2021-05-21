@@ -1,8 +1,8 @@
 :root {
-  --foregroundPop: rgb(253, 245, 234);
+  --foregroundPop: rgb(248, 212, 91);
   --accent: rgb(1, 110, 117);
   --background: #444;
-  --foreground: antiquewhite;
+  --foreground: ivory;
 }
 
 .App {

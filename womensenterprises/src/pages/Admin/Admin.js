@@ -123,6 +123,7 @@ export default function Form() {
           })
             .then(res => {
                 console.log(res.data)
+                fetchData();
             })
             .catch(error => console.error(`There was an error deleting the data`))
     }
@@ -133,6 +134,7 @@ export default function Form() {
             .post(`http://localhost:4001/api/create${target}`, formState[target])
             .then(res => {
                 console.log(res.data)
+                fetchData();
             })
             .catch(error => console.error(`There was an error creating the data`))
     }
@@ -209,7 +211,11 @@ export default function Form() {
                                                                 if (response.data[0]) {
                                                                     falseForm.ProductList = response.data;
                                                                 }
-                                                                setFormState(falseForm)
+                                                                setFormState({
+                                                                    ...formState,
+                                                                    ...falseForm
+                                                                })
+                                                                console.log('state updated from fetchData')
                                                             })
                                                             .catch(error => console.error(`There was an error retrieving home data: ${error}`))
                                                     })
