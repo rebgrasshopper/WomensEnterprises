@@ -9,12 +9,12 @@
     margin: 0px auto 0px auto;
     width: 80vw;
     padding: 0px 5vw 10vw 5vw;
-    border-bottom: 1px solid #444;
-    border-top: 1px solid #444;
-    background-color: rgb(253, 245, 234);
+    border-bottom: 1px solid var(--background);
+    border-top: 1px solid var(--background);
+    background-color: var(--foregroundPop);
 }
 
 .textDiv:last-of-type, .textDiv:first-of-type {
-    background-color: antiquewhite;
+    background-color: var(--foreground);
     border: none;
 }

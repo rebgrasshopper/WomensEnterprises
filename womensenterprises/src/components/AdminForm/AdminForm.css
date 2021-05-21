@@ -1,0 +1,37 @@
+form {
+    background-color: var(--foreground);
+    padding: 20px;
+    width: max-content;
+    max-width: 90vw;
+    margin: auto;
+}
+
+form label {
+    display: flex;
+    justify-content: space-between;
+}
+
+form input, form textarea {
+    margin-left: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 650px;
+    max-width: 80%;
+}
+
+form input {
+    width: 650px;
+    max-width: 80%;
+}
+
+form .card {
+    background-color: var(--foreground);
+    border: 1px solid var(--accent);
+    padding: 20px;
+    margin: 10px;
+}
+
+form button {
+    margin: 10px;
+}

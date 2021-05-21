@@ -33,16 +33,12 @@ knex.schema
             })
         }
     })
-    .then(() => {
-        console.log('sqlite spinup complete');
-    })
     .catch((error) => {
         console.error(`There was an error spinning up the database: ${error}`);
     });
 
 
 knex.select('*').from('home')
-    .then(data => console.log('home:', data))
     .catch(err => console.error(err));
 
 
@@ -72,16 +68,12 @@ knex.schema
             })
         }
     })
-    .then(() => {
-        console.log('sqlite spinup complete');
-    })
     .catch((error) => {
         console.error(`There was an error spinning up the database: ${error}`);
     });
 
 
 knex.select('*').from('about')
-    .then(data => console.log('about:', data))
     .catch(err => console.error(err));
 
 
@@ -109,16 +101,12 @@ knex.schema
             })
         }
     })
-    .then(() => {
-        console.log('sqlite spinup complete');
-    })
     .catch((error) => {
         console.error(`There was an error spinning up the database: ${error}`);
     });
 
 
 knex.select('*').from('communityPartners')
-    .then(data => console.log('communityPartners:', data))
     .catch(err => console.error(err));
 
 
@@ -143,16 +131,12 @@ knex.schema
             })
         }
     })
-    .then(() => {
-        console.log('sqlite spinup complete');
-    })
     .catch((error) => {
         console.error(`There was an error spinning up the database: ${error}`);
     });
 
 
 knex.select('*').from('communityPartnersList')
-    .then(data => console.log('communityPartnersList:', data))
     .catch(err => console.error(err));
 
 
@@ -181,16 +165,12 @@ knex.schema
             })
         }
     })
-    .then(() => {
-        console.log('sqlite spinup complete');
-    })
     .catch((error) => {
         console.error(`There was an error spinning up the database: ${error}`);
     });
 
 
 knex.select('*').from('governmentVending')
-    .then(data => console.log('governmentVending:', data))
     .catch(err => console.error(err));
 
 
@@ -224,16 +204,12 @@ knex.schema
         })
     }
 })
-.then(() => {
-    console.log('sqlite spinup complete');
-})
 .catch((error) => {
     console.error(`There was an error spinning up the database: ${error}`);
 });
 
 
 knex.select('*').from('ProductList')
-.then(data => console.log('ProductList:', data))
 .catch(err => console.error(err));
 
 
@@ -277,7 +253,6 @@ knex.schema
 
 
 knex.select('*').from('contact')
-    .then(data => console.log('contact:', data))
     .catch(err => console.error(err));
 
 

@@ -2,11 +2,11 @@
     margin: 0px 15px 0px 15px;
     padding: 0px;
     text-align: center;
-    background-color: antiquewhite !important;
+    background-color: var(--foreground) !important;
 }
 
 .jumbotron {
-    background-color: antiquewhite;
+    background-color: var(--foreground);
     margin: 0px auto 0px auto !important;
     padding: 0px !important;
 }
@@ -38,15 +38,15 @@
     margin: 0px auto 0px auto;
     width: 80vw;
     padding: 0px 5vw 10vw 5vw;
-    background-color: rgb(253, 245, 234);
+    background-color: var(--foregroundPop);
 }
 
 .aboutDivText:last-of-type {
-    background-color: antiquewhite;
-    border-top: 1px solid #444;
+    background-color: var(--foreground);
+    border-top: 1px solid var(--background);
 }
 
 .aboutDivText:first-of-type {
-    background-color: antiquewhite;
-    border-bottom: 1px solid #444;
+    background-color: var(--foreground);
+    border-bottom: 1px solid var(--background);
 }

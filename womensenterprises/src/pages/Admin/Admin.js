@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import Nav from '../../components/nav/nav'
 import Images from '../../components/imageLoader/imageLoader';
@@ -9,7 +9,7 @@ export default function Form() {
 
     console.log(Images[0].default);
 
-    const [formState, setFormState] = React.useState({
+    const [formState, setFormState] = useState({
         Home: {
             recentMessageTitle: "",
             recentMessage: "",
@@ -70,46 +70,100 @@ export default function Form() {
     })
 
     function handleChange(evt) {
-        console.log("formState:", formState)
         const formId = evt.target.dataset.form;
         const fieldName = evt.target.name
         const value = evt.target.value;
         console.log("Targeting", formId)
-        let falseObject = {
-            ...formState,
-            [formId]: {
-                ...formState[formId],
-                [fieldName]: value
-            }
+        if (formId === "CommunityPartnersList" || formId === "ProductList") {
+            const formIndex = evt.target.dataset.index;
+            let falseObject = formState[formId];
+
+            falseObject[formIndex][fieldName] = value;
+            console.log("false object:". falseObject)
+            setFormState({
+                ...formState,
+                [formId]: falseObject
+            });
+            console.log( fieldName, ":", falseObject[formIndex][fieldName])
+        } else {
+            setFormState({
+                ...formState,
+                [formId]: {
+                    ...formState[formId],
+                    [fieldName]: value
+                }
+            });
         }
-        setFormState({
-            ...formState,
-            [formId]: {
-                ...formState[formId],
-                [fieldName]: value
-            }
-        });
-        console.log("falseFormState:", falseObject);
     }
 
+    useEffect(() => {
+        console.log('updated State!')
+        console.log(formState)
+    }, [formState])
 
     function handleSubmit(evt) {
         evt.preventDefault();
         const target = evt.target.id;
         console.log(formState)
         handleDataUpdate(target);
-        
-        // handleDataCreate(target);
+        fetchData();
+
     }   
 
-    // function handleDataCreate(target) {
-    //     axios
-    //         .post(`http://localhost:4001/api/create${target}`, formState[target])
-    //         .then(res => {
-    //             console.log(res.data)
-    //         })
-    //         .catch(error => console.error(`There was an error creating the data`))
-    // }
+    function handleDataDelete(event) {
+        console.log('id', event.target.dataset.id)
+        const target = event.target.dataset.target;
+        const id = event.target.dataset.id;
+        axios({
+            method: 'DELETE',
+            url: `http://localhost:4001/api/remove${target}`,
+            data: {
+            id: id
+            }
+          })
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(error => console.error(`There was an error deleting the data`))
+    }
+
+    function handleDataCreate(event) {
+        const target = event.target.dataset.target;
+        axios
+            .post(`http://localhost:4001/api/create${target}`, formState[target])
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(error => console.error(`There was an error creating the data`))
+    }
+
+    function handleDataUpdate(target) {
+        if (target === "CommunityPartnersList" || target === "ProductList") {
+            formState[target].forEach(listItem => {
+                const targetId = listItem.id
+                axios
+                .put(`http://localhost:4001/api/update${target}`, {
+                    id: targetId,
+                    update: listItem
+                })
+                .then(res => {
+                    console.log('data updated: ', res.data)
+                    fetchData();
+                })
+                .catch(error => console.error(`There was an error updating the data: ${error}`))
+
+            })
+        } else {
+            axios
+                .put(`http://localhost:4001/api/update${target}`, formState[target])
+                .then(res => {
+                    console.log('data updated: ', res.data)
+                    fetchData();
+                })
+                .catch(error => console.error(`There was an error updating the data: ${error}`))
+        }
+    }
+
 
     const fetchData = async () => {
         const falseForm = formState;
@@ -117,49 +171,42 @@ export default function Form() {
             .get('http://localhost:4001/api/home')
             .then(response => {
                 if (response.data[0]) {
-                    console.log("Response Data:", response.data);
                     falseForm.Home = response.data[0];
                 }
                 axios
                     .get('http://localhost:4001/api/about')
                     .then(response => {
                         if (response.data[0]) {
-                            console.log("Response Data:", response.data);
                             falseForm.About = response.data[0];
                         }
                         axios
                             .get('http://localhost:4001/api/communityPartners')
                             .then(response => {
                                 if (response.data[0]) {
-                                    console.log("Response Data:", response.data);
                                     falseForm.CommunityPartners = response.data[0];
                                 }
                                 axios
                                     .get('http://localhost:4001/api/governmentVending')
                                     .then(response => {
                                         if (response.data[0]) {
-                                            console.log("Response Data:", response.data);
                                             falseForm.GovernmentVending = response.data[0];
                                         }
                                         axios
                                             .get('http://localhost:4001/api/contact')
                                             .then(response => {
                                                 if (response.data[0]) {
-                                                    console.log("Response Data:", response.data);
                                                     falseForm.Contact = response.data[0];
                                                 }
                                                 axios
                                                 .get('http://localhost:4001/api/communityPartnersList')
                                                     .then(response => {
                                                         if (response.data[0]) {
-                                                            console.log("Response Data:", response.data);
                                                             falseForm.CommunityPartnersList = response.data;
                                                         }
                                                         axios
                                                         .get('http://localhost:4001/api/productList')
                                                             .then(response => {
                                                                 if (response.data[0]) {
-                                                                    console.log("Response Data:", response.data);
                                                                     falseForm.ProductList = response.data;
                                                                 }
                                                                 setFormState(falseForm)
@@ -183,23 +230,7 @@ export default function Form() {
 
     }
 
-    function handleDataUpdate(target) {
-        axios
-            .put(`http://localhost:4001/api/update${target}`, formState[target])
-            .then(res => {
-                console.log('data updated: ', res.data)
-                fetchData();
-            })
-            .catch(error => console.error(`There was an error updating the data: ${error}`))
-    }
-
-    // function handleListItemCreation(target) {
-    //     // axios
-    //     //     .post(`http://localhost:4001/api/update${target}`,)
-    // }
-
-
-    React.useEffect(() => {
+    useEffect(() => {
         fetchData()
     }, [])
 
@@ -208,7 +239,7 @@ export default function Form() {
             <Nav />
             
             <div id="adminDiv">
-                <AdminNav handleSubmit = {handleSubmit} handleChange = {handleChange} formState = {formState} />
+                <AdminNav handleSubmit = {handleSubmit} handleDataDelete = {handleDataDelete} handleDataCreate = {handleDataCreate} handleChange = {handleChange} formState = {formState} />
             </div>
 
         </div>

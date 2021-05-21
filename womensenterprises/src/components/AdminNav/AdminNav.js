@@ -2,7 +2,7 @@ import './AdminNav.css';
 import { useState } from 'react';
 import AdminForm from '../AdminForm/AdminForm';
 
-export default function AdminNav({ handleSubmit, handleChange, formState }) {
+export default function AdminNav({ handleSubmit, handleDataDelete, handleDataCreate, handleChange, formState }) {
 
     const [page, setPage] = useState("SelectPage");
 
@@ -13,7 +13,7 @@ export default function AdminNav({ handleSubmit, handleChange, formState }) {
     return (
         <div id="adminNav">
             <div id="formChoiceDiv">
-                <label htmlFor="navSelect">Choose page to edit:</label>
+                <label id="chooseLabel" htmlFor="navSelect">Choose page to edit:</label>
                 <select name="navSelect" onChange = {handlePageChoice}>
                     <option value = "SelectPage">Select a Page</option>
                     <option value = "Home">Home</option>
@@ -25,7 +25,7 @@ export default function AdminNav({ handleSubmit, handleChange, formState }) {
                     <option value = "Contact">Contact</option>
                 </select>
             </div>
-            <AdminForm  page = {page} handleSubmit = {handleSubmit} handleChange = {handleChange} formState = {formState}/>
+            <AdminForm  page = {page} handleSubmit = {handleSubmit} handleDataDelete = {handleDataDelete} handleDataCreate = {handleDataCreate} handleChange = {handleChange} formState = {formState}/>
         </div>
         )
 }

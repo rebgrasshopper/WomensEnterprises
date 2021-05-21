@@ -1,6 +1,6 @@
 .navbar {
     padding: 10px 0px 10px;
-    background-color: #444;
+    background-color: var(--background);
 }
 
 .navbar-brand {

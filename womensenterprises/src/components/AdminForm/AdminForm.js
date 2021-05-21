@@ -1,4 +1,6 @@
-export default function AdminForm({ handleSubmit, handleChange, formState, page }) {
+import "./AdminForm.css";
+
+export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCreate, handleChange, formState, page }) {
     if (page === "Home") {
         return (
             <form id="Home" onSubmit={handleSubmit}>
@@ -17,7 +19,6 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                     <textarea
                     type="text"
                     rows="10"
-                    cols="80"
                     name="recentMessage"
                     data-form="Home"
                     value={formState.Home.recentMessage}
@@ -39,7 +40,6 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                     <textarea
                     type="text"
                     rows="10"
-                    cols="80"
                     name="mission"
                     data-form="Home"
                     value={formState.Home.mission}
@@ -61,7 +61,6 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                     <textarea
                     type="text"
                     rows="10"
-                    cols="80"
                     name="results"
                     data-form="Home"
                     value={formState.Home.results}
@@ -89,7 +88,6 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                     <textarea
                     type="text"
                     rows="10"
-                    cols="80"
                     name="mission"
                     data-form="About"
                     value={formState.About.mission}
@@ -111,7 +109,6 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                     <textarea
                     type="text"
                     rows="10"
-                    cols="80"
                     name="founderAbout"
                     data-form="About"
                     value={formState.About.founderAbout}
@@ -133,7 +130,6 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                     <textarea
                     type="text"
                     rows="10"
-                    cols="80"
                     name="communityPartnersLinkText"
                     data-form="About"
                     value={formState.About.communityPartnersLinkText}
@@ -155,7 +151,6 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                     <textarea
                     type="text"
                     rows="10"
-                    cols="80"
                     name="moreDetails"
                     data-form="About"
                     value={formState.About.moreDetails}
@@ -167,7 +162,6 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                     <textarea
                     type="text"
                     rows="10"
-                    cols="80"
                     name="governmentVendingLinkText"
                     data-form="About"
                     value={formState.About.governmentVendingLinkText}
@@ -195,7 +189,6 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                     <textarea
                     type="text"
                     rows="10"
-                    cols="80"
                     name="endBlurb"
                     data-form="CommunityPartners"
                     value={formState.CommunityPartners.endBlurb}
@@ -207,7 +200,6 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                     <textarea
                     type="text"
                     rows="10"
-                    cols="80"
                     name="contactLinkText"
                     data-form="CommunityPartners"
                     value={formState.CommunityPartners.contactLinkText}
@@ -220,9 +212,9 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
     } else if (page === "CommunityPartnersList") {
         return (
             <form id="CommunityPartnersList" onSubmit={handleSubmit}>
-            {formState.CommunityPartnersList.map(partner => {
+            {formState.CommunityPartnersList.map((partner, index) => {
                 return (
-                <div className="card" data-org={partner.id} key={partner.id}>
+                <div className="card" data-org={partner.id} key={partner.id} >
                     <label>
                         Organization Name: 
                         <input
@@ -231,6 +223,7 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                         data-form="CommunityPartnersList"
                         value={partner.orgName}
                         onChange={handleChange}
+                        data-index={index}
                         ></input>
                     </label><br></br>
                     <label>
@@ -239,8 +232,9 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                         type="text"
                         name="orgURL"
                         data-form="CommunityPartnersList"
-                        value={partner.orgURL}
+                        value={partner.orgUrl}
                         onChange={handleChange}
+                        data-index={index}
                         ></input>
                     </label><br></br>
                     <label>
@@ -251,6 +245,7 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                         data-form="CommunityPartnersList"
                         value={partner.orgImgLink}
                         onChange={handleChange}
+                        data-index={index}
                         ></input>
                     </label><br></br>
                     <label>
@@ -263,12 +258,17 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                         data-form="CommunityPartnersList"
                         value={partner.orgBlurb}
                         onChange={handleChange}
+                        data-index={index}
                         ></textarea>
                     </label><br></br>
-                    <button type="submit">Submit</button>
+                    <button type="button" className="remove" data-target="CommunityPartnersList" data-id={partner.id} onClick={handleDataDelete}>Remove</button>
                 </div>
                 )
             })}
+                <div className="formButtonDiv">
+                    <button type="submit">Submit</button>
+                    <button type="button" id="add" data-target="CommunityPartnersList" onClick={handleDataCreate}>Add New</button>
+                </div>
             </form>
         )
     } else if (page === "Government Vending") {
@@ -289,7 +289,6 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                     <textarea
                     type="text"
                     rows="10"
-                    cols="80"
                     name="aboutVending"
                     data-form="GovernmentVending"
                     value={formState.GovernmentVending.aboutVending}
@@ -301,7 +300,6 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                     <textarea
                     type="text"
                     rows="10"
-                    cols="80"
                     name="productsIntro"
                     data-form="GovernmentVending"
                     value={formState.GovernmentVending.productsIntro}
@@ -313,7 +311,6 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                     <textarea
                     type="text"
                     rows="10"
-                    cols="80"
                     name="contactLinkText"
                     data-form="GovernmentVending"
                     value={formState.GovernmentVending.contactLinkText}
@@ -326,9 +323,9 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
     } else if (page === "ProductList") {
         return (
             <form id="ProductList" onSubmit={handleSubmit}>
-            {formState.ProductList.map(product => {
+            {formState.ProductList.map((product, index) => {
                 return (
-                <div className="card" data-org={product.id} key={product.id}>
+                <div className="card" data-org={product.id} key={product.id} >
                     <label>
                         Product Name: 
                         <input
@@ -337,6 +334,7 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                         data-form="ProductList"
                         value={product.prodName}
                         onChange={handleChange}
+                        data-index={index}
                         ></input>
                     </label><br></br>
                     <label>
@@ -347,6 +345,7 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                         data-form="ProductList"
                         value={product.prodImgLink}
                         onChange={handleChange}
+                        data-index={index}
                         ></input>
                     </label><br></br>
                     <label>
@@ -359,6 +358,7 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                         data-form="ProductList"
                         value={product.prodBlurb}
                         onChange={handleChange}
+                        data-index={index}
                         ></textarea>
                     </label><br></br>
                     <label>
@@ -369,6 +369,7 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                         data-form="ProductList"
                         value={product.prodPrice10}
                         onChange={handleChange}
+                        data-index={index}
                         ></input>
                     </label><br></br>
                     <label>
@@ -379,6 +380,7 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                         data-form="ProductList"
                         value={product.prodPrice50}
                         onChange={handleChange}
+                        data-index={index}
                         ></input>
                     </label><br></br>
                     <label>
@@ -389,6 +391,7 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                         data-form="ProductList"
                         value={product.prodPrice100}
                         onChange={handleChange}
+                        data-index={index}
                         ></input>
                     </label><br></br>
                     <label>
@@ -399,6 +402,7 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                         data-form="ProductList"
                         value={product.prodPrice500}
                         onChange={handleChange}
+                        data-index={index}
                         ></input>
                     </label><br></br>
                     <label>
@@ -409,6 +413,7 @@ export default function AdminForm({ handleSubmit, handleChange, formState, page 
                         data-form="ProductList"
                         value={product.prodPrice1000}
                         onChange={handleChange}
+                        data-index={index}
                         ></input>
                     </label><br></br>
                     <button type="submit">Submit</button>

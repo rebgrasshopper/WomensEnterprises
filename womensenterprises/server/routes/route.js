@@ -43,6 +43,14 @@ router.put('/updateProductList', Routes.updateProductListData);
 router.put('/updateContact', Routes.updateContactData);
 
 
+
+//DELETES
+
+router.delete('/removeCommunityPartnersList', Routes.removeCommunityPartnersList);
+router.delete('/removeProductList', Routes.removeProductList);
+
+
+
 //EXPORT
 
 module.exports = router;
