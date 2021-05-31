@@ -19,12 +19,12 @@
 }
 
 #aboutFounderDiv {
-    display: flex;
     margin: auto;
     width: 80%;
 }
 
 #aboutFounderDiv img {
+    float: left;
     margin-right: 25px;
     bottom: 0px;
     max-width: 40%;

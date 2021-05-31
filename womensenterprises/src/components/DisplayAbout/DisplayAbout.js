@@ -17,7 +17,9 @@ export default function DisplayAbout({aboutData}) {
                     <h1 className="textH1 founderTitle">{aboutData.founderTitle}</h1>
                     <div id="aboutFounderDiv">
                         <img src={aboutData.founderImgUrl} alt="Dolly Duff, Founder"></img>
-                        <div className="textContent">{aboutData.founderAbout}</div>
+                        {aboutData.founderAbout.split("\n").map((element, index) => {
+                            return <div className = "textContent" key={index}>{element}</div>
+                        })}
                     </div>
                 </div>
                 <div className="aboutDivText">

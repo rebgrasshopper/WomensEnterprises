@@ -26,3 +26,10 @@
 .active {
     background-color: #555;
 }
+
+#logoSubtitle {
+    font-family: 'Dancing Script', cursive;
+    color: var(--foregroundPop);
+    font-size: x-large;
+
+}
