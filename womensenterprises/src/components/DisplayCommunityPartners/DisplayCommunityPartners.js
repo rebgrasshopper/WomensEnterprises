@@ -12,8 +12,12 @@ export default function DisplayCommunityPartners({CommunityPartnersData, Communi
                 <div className="CPCardsDiv">
                     {CommunityPartnersList.map(partner => {
                         return (
-                            <div className="card" key={partner.id}>
-                                <img className="card-img" src={partner.imgUrl} alt={partner.id}></img>
+                            <div className="card partnerCard" key={partner.id}>
+                                <img className="card-img partnerImg" src={partner.orgImgLink} alt={partner.id}></img>
+                                <div className="card-text partnerText">
+                                    <h2 className="cart-title partnerTitle"><a href={partner.orgUrl}>{partner.orgName}</a></h2>
+                                    <p>{partner.orgBlurb}</p>
+                                </div>
                             </div>
                         )
                     })}
