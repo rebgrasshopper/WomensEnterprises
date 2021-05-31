@@ -4,6 +4,8 @@ import Nav from '../../components/nav/nav'
 import Images from '../../components/imageLoader/imageLoader';
 import './Admin.css';
 import AdminNav from '../../components/AdminNav/AdminNav';
+import Footer from "../../components/Footer/Footer";
+
 
 export default function Form() {
 
@@ -247,7 +249,7 @@ export default function Form() {
             <div id="adminDiv">
                 <AdminNav handleSubmit = {handleSubmit} handleDataDelete = {handleDataDelete} handleDataCreate = {handleDataCreate} handleChange = {handleChange} formState = {formState} />
             </div>
-
+            <Footer />
         </div>
     );
 }

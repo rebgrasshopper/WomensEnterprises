@@ -1,0 +1,6 @@
+#DisplayCommunityPartners, #DisplayGovernmentVending {
+    margin: 0px 15px 0px 15px;
+    padding: 40px;
+    text-align: center;
+    background-color: var(--foreground) !important;
+}

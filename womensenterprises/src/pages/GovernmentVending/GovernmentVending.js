@@ -2,6 +2,7 @@ import Nav from '../../components/nav/nav';
 import DisplayGovernmentVending from "../../components/DisplayGovernmentVending/DisplayGovernmentVending";
 import axios from 'axios';
 import {useEffect, useState} from 'react';
+import Footer from "../../components/Footer/Footer";
 
 export default function GovernmentVending(){
 
@@ -36,6 +37,7 @@ export default function GovernmentVending(){
         <div className="main">
             <Nav />
             <DisplayGovernmentVending GovernmentVendingData = {GovernmentVendingData}/>
+            <Footer />
         </div>
     )
 }

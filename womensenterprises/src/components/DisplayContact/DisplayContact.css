@@ -17,11 +17,8 @@
     background-color: var(--foregroundPop);
 }
 
-.emailButton {
+.contactButtons img {
+    max-width: 100%;
     width: 200px;
     margin: auto;
-}
-
-.emailButton img {
-    max-width: 100%;
 }

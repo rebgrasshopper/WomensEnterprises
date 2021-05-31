@@ -2,6 +2,7 @@ import Nav from '../../components/nav/nav';
 import DisplayContact from "../../components/DisplayContact/DisplayContact";
 import axios from 'axios';
 import {useEffect, useState} from 'react';
+import Footer from "../../components/Footer/Footer";
 
 export default function Contact(){
 
@@ -35,6 +36,7 @@ export default function Contact(){
         <div className="main">
             <Nav />
             <DisplayContact ContactData = {ContactData}/>
+            <Footer />
         </div>
     )
 }
