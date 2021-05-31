@@ -3,14 +3,16 @@ import {Link} from 'react-router-dom'
 
 export default function DisplayGovernmentVending({GovernmentVendingData, ProductData}) {
 
-    if (GovernmentVendingData) {
+    if (GovernmentVendingData.aboutVending) {
         return (
             <div id="DisplayGovernmentVending">
                  <div className="Jumbotron">
                     <h1 className="textH1">{GovernmentVendingData.pageTitle}</h1>
                 </div>
                 <div className="GVDivText">
-                    <div className="textContent">{GovernmentVendingData.aboutVending}</div>
+                <div className="textContent">{GovernmentVendingData.aboutVending.split("\n").map((element, index) => {
+                        return <div className = "textContent" key={index}>{element}</div>
+                    })}</div>
                 </div>
                 <div className="ProductsDiv">
                     {ProductData.map(product => {
@@ -18,7 +20,9 @@ export default function DisplayGovernmentVending({GovernmentVendingData, Product
                                 <div className="card productCard" key={product.prodName}>
                                     <h2>{product.prodName}</h2>
                                     <img src={product.prodImgLink} alt={product.prodName}></img>
-                                    <div>{product.prodBlurb}</div>
+                                    <div className="textContent">{product.prodBlurb.split("\n").map((element, index) => {
+                                        return <div className = "textContent" key={index}>{element}</div>
+                                    })}</div>
                                 </div>
                             )
                     })}

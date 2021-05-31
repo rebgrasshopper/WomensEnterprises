@@ -15,7 +15,9 @@ export default function DisplayCommunityPartners({CommunityPartnersData, Communi
                                 <img className="card-img partnerImg" src={partner.orgImgLink} alt={partner.id}></img>
                                 <div className="card-text partnerText">
                                     <h2 className="cart-title partnerTitle"><a href={partner.orgUrl}>{partner.orgName}</a></h2>
-                                    <p>{partner.orgBlurb}</p>
+                                    <div className="textContent">{partner.orgBlurb.split("\n").map((element, index) => {
+                                        return <div className = "textContent" key={index}>{element}</div>
+                                    })}</div>
                                 </div>
                             </div>
                         )

@@ -1,8 +1,12 @@
 import './DisplayAbout.css';
+import {useEffect} from 'react';
 import {Link} from 'react-router-dom'
 import HeroImage from '../../images/Landing/pexels-hoang-loc-cropped.jpg';
 
 export default function DisplayAbout({aboutData}) {
+    useEffect(() =>{
+        console.log("Hero image from Pexels: Hoang Loc")
+    }, [])
     if (aboutData) {
         return (
             <div id="DisplayAbout">
@@ -11,7 +15,9 @@ export default function DisplayAbout({aboutData}) {
                 </figure>
                  <div className="aboutDivText">
                     <h1 className="textH1">{aboutData.missionTitle}</h1>
-                    <div className="textContent">{aboutData.mission}</div>
+                    <div className="textContent">{aboutData.mission.split("\n").map((element, index) => {
+                        return <div className = "textContent" key={index}>{element}</div>
+                    })}</div>
                 </div>
                 <div className="aboutDivText">
                     <h1 className="textH1 founderTitle">{aboutData.founderTitle}</h1>
@@ -30,7 +36,9 @@ export default function DisplayAbout({aboutData}) {
                 </div>
                 <div className="aboutDivText">
                     <h1 className="textH1">{aboutData.moreDetailsTitle}</h1>
-                    <div className="textContent">{aboutData.moreDetails}</div>
+                    <div className="textContent">{aboutData.moreDetails.split("\n").map((element, index) => {
+                        return <div className = "textContent" key={index}>{element}</div>
+                    })}</div>
                     <div className="textContent">
                         <Link to = { process.env.PUBLIC_URL + "/governmentVending" }>{aboutData.governmentVendingLinkText}</Link>
                     </div>
