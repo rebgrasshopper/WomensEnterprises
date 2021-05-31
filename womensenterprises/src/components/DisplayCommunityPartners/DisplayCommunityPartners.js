@@ -2,8 +2,7 @@ import './DisplayCommunityPartners.css';
 import {Link} from 'react-router-dom'
 
 export default function DisplayCommunityPartners({CommunityPartnersData, CommunityPartnersList}) {
-    console.log(CommunityPartnersData)
-    console.log(CommunityPartnersList)
+    console.log("Community Parters List:", CommunityPartnersList)
     if (CommunityPartnersData && CommunityPartnersList) {
         return (
             <div id="DisplayCommunityPartners">
@@ -14,7 +13,7 @@ export default function DisplayCommunityPartners({CommunityPartnersData, Communi
                     {CommunityPartnersList.map(partner => {
                         return (
                             <div className="card" key={partner.id}>
-                                <img className="card-img" src={partner.imgUrl}></img>
+                                <img className="card-img" src={partner.imgUrl} alt={partner.id}></img>
                             </div>
                         )
                     })}

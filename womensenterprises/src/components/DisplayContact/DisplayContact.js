@@ -15,7 +15,7 @@ export default function DisplayContact({ContactData}) {
                  <div className="jumbotron contactJumbo">
                     <h1 className="textH1">Get In Touch!</h1>
                 </div>
-                <div className="contactButtons">
+                {ContactData.instagram && <div className="contactButtons">
                     <Link to='#' onClick={(e) => {window.location = `mailto:${ContactData.email}`}}>
                         <img className = "contactIcon" src={EmailIcon} alt="envelope symbol"></img>
                     </Link>
@@ -28,7 +28,7 @@ export default function DisplayContact({ContactData}) {
                     <a href={ContactData.instagram}>
                         <img className = "contactIcon" src={InstagramIcon} alt="instagram symbol"></img>
                     </a>
-                </div>    
+                </div>    }
             </div>
             )
     } else {

@@ -33,10 +33,6 @@ export default function CommunityPartners(){
         fetchData()
     }, [])
 
-    useEffect(()=>{
-        console.log("CommunityPartnersData:", CommunityPartnersData)
-    }, [CommunityPartnersData])
-
 
 
 

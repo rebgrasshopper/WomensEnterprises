@@ -81,7 +81,7 @@ export default function Form() {
             let falseObject = formState[formId];
 
             falseObject[formIndex][fieldName] = value;
-            console.log("false object:". falseObject)
+            console.log("false object:", falseObject)
             setFormState({
                 ...formState,
                 [formId]: falseObject

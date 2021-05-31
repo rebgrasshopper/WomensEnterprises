@@ -14,28 +14,29 @@ function Footer(){
     })
 
     useEffect(() => {
+        console.log("contact info from footer:", contactInfo)
+    }, [contactInfo])
+
+    useEffect(() => {
         axios
             .get('http://localhost:4001/api/contact')
             .then(response => {
                 if (response.data[0]) {
-                    setContactInfo({
-                        ...
-                        response.data[0]
-                    })
+                    setContactInfo(response.data[0])
                 }
             })
-    });
+    }, []);
 
     return (
         <footer>
             <p id="copyright">© Women's Enterprises 2021</p>
             <div id="socialMedia">
-                <button id="FB"><a href={contactInfo.facebook} target="_blank"
-                        rel="noreferrer"><img src={Facebook} alt="facebook icon" /></a></button>
+                <button id="FB">{contactInfo.facebook && <a href={contactInfo.facebook} target="_blank"
+                        rel="noreferrer"><img src={Facebook} alt="facebook icon" /></a>}</button>
 
-                <button id="insta"><a href={contactInfo.instagram} target="_blank" rel="noreferrer">
+                <button id="insta">{contactInfo.instagram && <a href={contactInfo.instagram} target="_blank" rel="noreferrer">
                     <img src={Insta} alt="instagram icon" ></img>
-                    </a></button>
+                    </a>}</button>
             </div>
         </footer>
     )
