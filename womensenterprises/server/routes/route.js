@@ -15,7 +15,7 @@ router.get('/communityPartnersList', Routes.communityPartnersListData);
 router.get('/governmentVending', Routes.governmentVendingData);
 router.get('/productList', Routes.productListData);
 router.get('/contact', Routes.contactData);
-
+router.get('/admin', Routes.adminData);
 
 
 
@@ -28,7 +28,7 @@ router.post('/createCommunityPartnersList', Routes.createCommunityPartnersListDa
 router.post('/createGovernmentVending', Routes.createGovernmentVendingData);
 router.post('/createProductList', Routes.createProductListData);
 router.post('/createContact', Routes.createContactData);
-
+router.post('/createAdmin', Routes.createAdminData);
 
 
 
@@ -41,6 +41,7 @@ router.put('/updateCommunityPartnersList', Routes.updateCommunityPartnersListDat
 router.put('/updateGovernmentVending', Routes.updateGovernmentVendingData);
 router.put('/updateProductList', Routes.updateProductListData);
 router.put('/updateContact', Routes.updateContactData);
+router.put('/updateAdmin', Routes.updateAdminData);
 
 
 
@@ -48,6 +49,7 @@ router.put('/updateContact', Routes.updateContactData);
 
 router.delete('/removeCommunityPartnersList', Routes.removeCommunityPartnersList);
 router.delete('/removeProductList', Routes.removeProductList);
+router.delete('/removeAdmin', Routes.removeAdmin);
 
 
 

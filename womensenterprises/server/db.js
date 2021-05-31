@@ -11,6 +11,51 @@ const knex = require('knex')({
 });
 
 
+
+
+
+
+
+
+
+
+
+//create table
+knex.schema
+    .hasTable('admin')
+    .then((exists) => {
+        if (!exists) {
+            return knex.schema.createTable('admin', (table) => {
+                table.increments('id').primary()
+                table.string('user')
+                table.string('password')
+                table.bool('super')
+            })
+            .then(() => {
+                console.log('Table "admin" created');
+            })
+            .catch((error) => {
+                console.error(`There was an error creating table "admin": ${error}`);
+            })
+        }
+    })
+    .catch((error) => {
+        console.error(`There was an error spinning up the database: ${error}`);
+    });
+
+
+knex.select('*').from('admin')
+    .catch(err => console.error(err));
+
+
+
+
+
+
+
+
+
+
 //create table
 knex.schema
     .hasTable('home')

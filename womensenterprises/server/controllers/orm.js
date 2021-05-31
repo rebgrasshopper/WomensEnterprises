@@ -12,6 +12,19 @@ const knex = require('./../db');
 
 //READS
 
+exports.adminData = async (req, res) => {
+    knex
+        .select('*')
+        .from('admin')
+        .then(adminContents => {
+            res.json(adminContents)
+        })
+        .catch(err => {
+            res.json({message: `There was an error retrieving home content: ${err}`})
+        })
+}
+
+
 exports.homeData = async (req, res) => {
     knex
         .select('*')
@@ -106,6 +119,23 @@ exports.contactData = async (req, res) => {
 
 
 //CREATES
+
+
+exports.createAdminData = async (req, res) => {
+    knex('Admin')
+        .insert({
+            'user':req.body.user,
+            'password': req.body.password,
+            'super': req.body.super
+        })
+        .then(() => {
+            res.json({ message: `Admin data created`})
+        })
+        .catch(err => {
+            res.json({ message: `There was an error creating Admin data`})
+        })
+}
+
 
 exports.createHomeData = async (req, res) => {
     knex('home')
@@ -240,6 +270,20 @@ exports.createContactData = async (req, res) => {
 
 //UPDATES
 
+
+exports.updateAdminData = async (req, res) => {
+    knex('admin')
+  .where({ id: 1 })
+  .update(req.body)
+  .then(() => {
+      res.json({ message: 'admin data updated' })
+  })
+  .catch(err => {
+      res.json({ message: 'There was an error updating admin data' })
+  })
+}
+
+
 exports.updateHomeData = async (req, res) => {
     knex('home')
   .where({ id: 1 })
@@ -332,6 +376,19 @@ exports.updateContactData = async (req, res) => {
 
 
 //DELETES
+
+
+exports.removeAdmin = async (req, res) => {
+    knex('admin')
+  .where({ id: req.body.id })
+  .del()
+  .then(() => {
+      res.json({ message: `admin id: ${req.body.id} deleted` })
+  })
+  .catch(err => {
+      res.json({ message: `There was an error deleting id: ${req.body.id} from admin` })
+  })
+}
 
 exports.removeCommunityPartnersList = async (req, res) => {
     knex('communityPartnersList')
