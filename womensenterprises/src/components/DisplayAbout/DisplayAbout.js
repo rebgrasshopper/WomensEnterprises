@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import HeroImage from '../../images/Landing/pexels-hoang-loc-cropped.jpg';
 
 export default function DisplayAbout({aboutData}) {
-    console.log(aboutData)
     if (aboutData) {
         return (
             <div id="DisplayAbout">

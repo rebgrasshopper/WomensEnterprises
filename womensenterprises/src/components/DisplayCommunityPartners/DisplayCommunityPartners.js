@@ -2,7 +2,6 @@ import './DisplayCommunityPartners.css';
 import {Link} from 'react-router-dom'
 
 export default function DisplayCommunityPartners({CommunityPartnersData, CommunityPartnersList}) {
-    console.log("Community Parters List:", CommunityPartnersList)
     if (CommunityPartnersData && CommunityPartnersList) {
         return (
             <div id="DisplayCommunityPartners">

@@ -1,7 +1,6 @@
 import './displayHome.css';
 
 export default function DisplayHome({homeData}) {
-    console.log(homeData)
     if (homeData) {
         return (
             <div id="displayHome">

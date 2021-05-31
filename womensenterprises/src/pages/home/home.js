@@ -21,23 +21,19 @@ export default function Home(){
         results: ''
     })
 
-    const [ loading, setLoading ] = useState(true);
 
     let photos = [
-        {photo: pic3, alt:"Photo by Matheus Bertelli", caption:"Let's create opportunities for women to succeed"},
-        {photo: pic4, alt:"Photo by RFStudio, from Pexels", caption:"Let's support women lead organizations"},
-        {photo: pic1, alt:"Photo by Anna Tarazevich, from Pexels", caption:"Let's bring to life ideas from minority voices"},
-        {photo: pic2, alt:"Photo by Andrea Piacquadio, from Pexels", caption:"Let's support women in our communities"},
+        {photo: pic3, alt:"Photo by Matheus Bertelli, from Pexels", title:"Photo by Matheus Bertelli, from Pexels", caption:"Let's create opportunities for women to succeed"},
+        {photo: pic4, alt:"Photo by RFStudio, from Pexels", title:"Photo by RFStudio, from Pexels", caption:"Let's support women lead organizations"},
+        {photo: pic1, alt:"Photo by Anna Tarazevich, from Pexels", title:"Photo by Anna Tarazevich, from Pexels", caption:"Let's bring to life ideas from minority voices"},
+        {photo: pic2, alt:"Photo by Andrea Piacquadio, from Pexels", title:"Photo by Andrea Piacquadio, from Pexels", caption:"Let's support women in our communities"},
     ];
 
     const fetchData = async () => {
         axios
             .get('http://localhost:4001/api/home')
             .then(response => {
-                console.log("Response Data:", response.data)
                 setHomeData(response.data[0])
-
-                setLoading(false)
             })
             .catch(error => console.error(`There was an error retrieving data: ${error}`))
     }
@@ -45,10 +41,9 @@ export default function Home(){
 
     useEffect(() => {
         fetchData()
+        console.log("Landing page images from Pexels: RFStudio, Anna Tarazevich, Andrea Piacquadio, Matheus Bertelli")
     }, [])
 
-    console.log("Home Data from home.js: ", homeData)
-    console.log("loading from home.js:", loading)
     return (
         <div className="main">
             <Nav></Nav>

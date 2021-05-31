@@ -6,7 +6,6 @@ import FacebookIcon from '../../images/icons/facebook.png';
 import InstagramIcon from '../../images/icons/instagram.png';
 
 export default function DisplayContact({ContactData}) {
-    console.log(ContactData)
 
     
     if (ContactData) {

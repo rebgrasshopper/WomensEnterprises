@@ -24,7 +24,6 @@ export default function About(){
         axios
             .get('http://localhost:4001/api/about')
             .then(response => {
-                console.log("Response Data:", response.data[0])
                 setAboutData(response.data[0])
             })
             .catch(error => console.error(`There was an error retrieving data: ${error}`))
@@ -34,10 +33,6 @@ export default function About(){
     useEffect(() => {
         fetchData()
     }, [])
-
-    useEffect(()=>{
-        console.log("AboutData:", aboutData)
-    }, [aboutData])
 
 
     return (

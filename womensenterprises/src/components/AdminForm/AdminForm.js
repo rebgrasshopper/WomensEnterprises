@@ -1,6 +1,7 @@
 import "./AdminForm.css";
 
 export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCreate, handleChange, formState, page }) {
+
     if (page === "Home") {
         return (
             <form id="Home" onSubmit={handleSubmit}>
@@ -10,7 +11,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     type="text"
                     name="recentMessageTitle"
                     data-form="Home"
-                    value={formState.Home.recentMessageTitle}
+                    value={formState.Home.recentMessageTitle ? formState.Home.recentMessageTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -21,7 +22,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     rows="10"
                     name="recentMessage"
                     data-form="Home"
-                    value={formState.Home.recentMessage}
+                    value={formState.Home.recentMessage ? formState.Home.recentMessage : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -31,7 +32,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     type="text"
                     name="missionTitle"
                     data-form="Home"
-                    value={formState.Home.missionTitle}
+                    value={formState.Home.missionTitle ? formState.Home.missionTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -42,7 +43,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     rows="10"
                     name="mission"
                     data-form="Home"
-                    value={formState.Home.mission}
+                    value={formState.Home.mission ? formState.Home.mission : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -52,7 +53,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     type="text"
                     name="resultsTitle"
                     data-form="Home"
-                    value={formState.Home.resultsTitle}
+                    value={formState.Home.resultsTitle ? formState.Home.resultsTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -63,7 +64,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     rows="10"
                     name="results"
                     data-form="Home"
-                    value={formState.Home.results}
+                    value={formState.Home.results ? formState.Home.results : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -79,7 +80,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     type="text"
                     name="missionTitle"
                     data-form="About"
-                    value={formState.About.missionTitle}
+                    value={formState.About.missionTitle ? formState.About.missionTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -90,7 +91,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     rows="10"
                     name="mission"
                     data-form="About"
-                    value={formState.About.mission}
+                    value={formState.About.mission ? formState.About.mission : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -100,7 +101,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     type="text"
                     name="founderTitle"
                     data-form="About"
-                    value={formState.About.founderTitle}
+                    value={formState.About.founderTitle ? formState.About.founderTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -111,7 +112,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     rows="10"
                     name="founderAbout"
                     data-form="About"
-                    value={formState.About.founderAbout}
+                    value={formState.About.founderAbout ? formState.About.founderAbout : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -121,7 +122,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     type="text"
                     name="founderImgUrl"
                     data-form="About"
-                    value={formState.About.founderImgUrl}
+                    value={formState.About.founderImgUrl ? formState.About.founderImgUrl : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -132,7 +133,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     rows="10"
                     name="communityPartnersLinkText"
                     data-form="About"
-                    value={formState.About.communityPartnersLinkText}
+                    value={formState.About.communityPartnersLinkText ? formState.About.communityPartnersLinkText : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -142,7 +143,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     type="text"
                     name="moreDetailsTitle"
                     data-form="About"
-                    value={formState.About.moreDetailsTitle}
+                    value={formState.About.moreDetailsTitle ? formState.About.moreDetailsTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -153,7 +154,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     rows="10"
                     name="moreDetails"
                     data-form="About"
-                    value={formState.About.moreDetails}
+                    value={formState.About.moreDetails ? formState.About.moreDetails : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -164,7 +165,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     rows="10"
                     name="governmentVendingLinkText"
                     data-form="About"
-                    value={formState.About.governmentVendingLinkText}
+                    value={formState.About.governmentVendingLinkText ? formState.About.governmentVendingLinkText : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -180,7 +181,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     type="text"
                     name="pageTitle"
                     data-form="CommunityPartners"
-                    value={formState.CommunityPartners.pageTitle}
+                    value={formState.CommunityPartners.pageTitle ? formState.CommunityPartners.pageTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -191,7 +192,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     rows="10"
                     name="endBlurb"
                     data-form="CommunityPartners"
-                    value={formState.CommunityPartners.endBlurb}
+                    value={formState.CommunityPartners.endBlurb ? formState.CommunityPartners.endBlurb : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -202,7 +203,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     rows="10"
                     name="contactLinkText"
                     data-form="CommunityPartners"
-                    value={formState.CommunityPartners.contactLinkText}
+                    value={formState.CommunityPartners.contactLinkText ? formState.CommunityPartners.contactLinkText : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -221,7 +222,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                         type="text"
                         name="orgName"
                         data-form="CommunityPartnersList"
-                        value={partner.orgName}
+                        value={partner.orgName ? partner.orgName : ""}
                         onChange={handleChange}
                         data-index={index}
                         ></input>
@@ -232,7 +233,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                         type="text"
                         name="orgUrl"
                         data-form="CommunityPartnersList"
-                        value={partner.orgUrl}
+                        value={partner.orgUrl ? partner.orgUrl : ""}
                         onChange={handleChange}
                         data-index={index}
                         ></input>
@@ -243,7 +244,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                         type="text"
                         name="orgImgLink"
                         data-form="CommunityPartnersList"
-                        value={partner.orgImgLink}
+                        value={partner.orgImgLink ? partner.orgImgLink : ""}
                         onChange={handleChange}
                         data-index={index}
                         ></input>
@@ -256,7 +257,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                         cols="80"
                         name="orgBlurb"
                         data-form="CommunityPartnersList"
-                        value={partner.orgBlurb}
+                        value={partner.orgBlurb ? partner.orgBlurb : ""}
                         onChange={handleChange}
                         data-index={index}
                         ></textarea>
@@ -280,7 +281,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     type="text"
                     name="pageTitle"
                     data-form="GovernmentVending"
-                    value={formState.GovernmentVending.pageTitle}
+                    value={formState.GovernmentVending.pageTitle ? formState.GovernmentVending.pageTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -291,7 +292,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     rows="10"
                     name="aboutVending"
                     data-form="GovernmentVending"
-                    value={formState.GovernmentVending.aboutVending}
+                    value={formState.GovernmentVending.aboutVending ? formState.GovernmentVending.aboutVending : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -302,7 +303,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     rows="10"
                     name="productsIntro"
                     data-form="GovernmentVending"
-                    value={formState.GovernmentVending.productsIntro}
+                    value={formState.GovernmentVending.productsIntro ? formState.GovernmentVending.productsIntro : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -313,7 +314,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     rows="10"
                     name="contactLinkText"
                     data-form="GovernmentVending"
-                    value={formState.GovernmentVending.contactLinkText}
+                    value={formState.GovernmentVending.contactLinkText ? formState.GovernmentVending.contactLinkText : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -332,7 +333,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                         type="text"
                         name="prodName"
                         data-form="ProductList"
-                        value={product.prodName}
+                        value={product.prodName ? product.prodName : ""}
                         onChange={handleChange}
                         data-index={index}
                         ></input>
@@ -343,7 +344,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                         type="text"
                         name="prodImgLink"
                         data-form="ProductList"
-                        value={product.prodImgLink}
+                        value={product.prodImgLink ? product.prodImgLink : ""}
                         onChange={handleChange}
                         data-index={index}
                         ></input>
@@ -356,7 +357,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                         cols="80"
                         name="prodBlurb"
                         data-form="ProductList"
-                        value={product.prodBlurb}
+                        value={product.prodBlurb ? product.prodBlurb : ""}
                         onChange={handleChange}
                         data-index={index}
                         ></textarea>
@@ -367,7 +368,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                         type="text"
                         name="prodPrice10"
                         data-form="ProductList"
-                        value={product.prodPrice10}
+                        value={product.prodPrice10 ? product.prodPrice10 : ""}
                         onChange={handleChange}
                         data-index={index}
                         ></input>
@@ -378,7 +379,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                         type="text"
                         name="prodPrice50"
                         data-form="ProductList"
-                        value={product.prodPrice50}
+                        value={product.prodPrice50 ? product.prodPrice50 : ""}
                         onChange={handleChange}
                         data-index={index}
                         ></input>
@@ -389,7 +390,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                         type="text"
                         name="prodPrice100"
                         data-form="ProductList"
-                        value={product.prodPrice100}
+                        value={product.prodPrice100 ? product.prodPrice100 : ""}
                         onChange={handleChange}
                         data-index={index}
                         ></input>
@@ -400,7 +401,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                         type="text"
                         name="prodPrice500"
                         data-form="ProductList"
-                        value={product.prodPrice500}
+                        value={product.prodPrice500 ? product.prodPrice500 : ""}
                         onChange={handleChange}
                         data-index={index}
                         ></input>
@@ -411,7 +412,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                         type="text"
                         name="prodPrice1000"
                         data-form="ProductList"
-                        value={product.prodPrice1000}
+                        value={product.prodPrice1000 ? product.prodPrice1000 : ""}
                         onChange={handleChange}
                         data-index={index}
                         ></input>
@@ -431,7 +432,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     type="text"
                     name="email"
                     data-form="Contact"
-                    value={formState.Contact.email}
+                    value={formState.Contact.email ? formState.Contact.email : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -441,7 +442,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     type="text"
                     name="phone"
                     data-form="Contact"
-                    value={formState.Contact.phone}
+                    value={formState.Contact.phone ? formState.Contact.phone : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -451,7 +452,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     type="text"
                     name="facebook"
                     data-form="Contact"
-                    value={formState.Contact.facebook}
+                    value={formState.Contact.facebook ? formState.Contact.facebook : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -461,7 +462,7 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                     type="text"
                     name="instagram"
                     data-form="Contact"
-                    value={formState.Contact.instagram}
+                    value={formState.Contact.instagram ? formState.Contact.instagram : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>

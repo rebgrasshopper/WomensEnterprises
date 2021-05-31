@@ -15,12 +15,10 @@ export default function CommunityPartners(){
         axios
             .get('http://localhost:4001/api/communityPartners')
             .then(response => {
-                console.log("Response Data:", response.data[0])
                 setCommunityPartnersData(response.data[0])
                 axios
                 .get('http://localhost:4001/api/communityPartnersList')
                 .then(response => {
-                    console.log("Response Data:", response.data)
                     setCommunityPartnersList(response.data)
                 })
                 .catch(error => console.error(`There was an error retrieving data: ${error}`))

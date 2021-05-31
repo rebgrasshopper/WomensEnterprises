@@ -14,10 +14,6 @@ function Footer(){
     })
 
     useEffect(() => {
-        console.log("contact info from footer:", contactInfo)
-    }, [contactInfo])
-
-    useEffect(() => {
         axios
             .get('http://localhost:4001/api/contact')
             .then(response => {

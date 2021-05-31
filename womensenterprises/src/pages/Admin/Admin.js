@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import axios from 'axios';
 import Nav from '../../components/nav/nav'
-import Images from '../../components/imageLoader/imageLoader';
+// import Images from '../../components/imageLoader/imageLoader';
 import './Admin.css';
 import AdminNav from '../../components/AdminNav/AdminNav';
 import Footer from "../../components/Footer/Footer";
@@ -9,7 +9,6 @@ import Footer from "../../components/Footer/Footer";
 
 export default function Form() {
 
-    console.log(Images[0].default);
 
     const [formState, setFormState] = useState({
         Home: {
@@ -75,13 +74,11 @@ export default function Form() {
         const formId = evt.target.dataset.form;
         const fieldName = evt.target.name
         const value = evt.target.value;
-        console.log("Targeting", formId)
         if (formId === "CommunityPartnersList" || formId === "ProductList") {
             const formIndex = evt.target.dataset.index;
             let falseObject = formState[formId];
 
             falseObject[formIndex][fieldName] = value;
-            console.log("false object:", falseObject)
             setFormState({
                 ...formState,
                 [formId]: falseObject
@@ -98,15 +95,9 @@ export default function Form() {
         }
     }
 
-    useEffect(() => {
-        console.log('updated State!')
-        console.log(formState)
-    }, [formState])
-
     function handleSubmit(evt) {
         evt.preventDefault();
         const target = evt.target.id;
-        console.log(formState)
         handleDataUpdate(target);
         fetchData();
 
@@ -124,7 +115,6 @@ export default function Form() {
             }
           })
             .then(res => {
-                console.log(res.data)
                 fetchData();
             })
             .catch(error => console.error(`There was an error deleting the data`))
@@ -151,7 +141,6 @@ export default function Form() {
                     update: listItem
                 })
                 .then(res => {
-                    console.log('data updated: ', res.data)
                     fetchData();
                 })
                 .catch(error => console.error(`There was an error updating the data: ${error}`))
@@ -161,7 +150,6 @@ export default function Form() {
             axios
                 .put(`http://localhost:4001/api/update${target}`, formState[target])
                 .then(res => {
-                    console.log('data updated: ', res.data)
                     fetchData();
                 })
                 .catch(error => console.error(`There was an error updating the data: ${error}`))
@@ -169,7 +157,7 @@ export default function Form() {
     }
 
 
-    const fetchData = async () => {
+    const fetchData = useCallback( async () => {
         const falseForm = formState;
         axios
             .get('http://localhost:4001/api/home')
@@ -217,7 +205,6 @@ export default function Form() {
                                                                     ...formState,
                                                                     ...falseForm
                                                                 })
-                                                                console.log('state updated from fetchData')
                                                             })
                                                             .catch(error => console.error(`There was an error retrieving home data: ${error}`))
                                                     })
@@ -236,11 +223,11 @@ export default function Form() {
 
 
 
-    }
+    }, [formState])
 
     useEffect(() => {
         fetchData()
-    }, [])
+    }, [fetchData])
 
     return (
         <div className="main">
