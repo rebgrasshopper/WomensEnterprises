@@ -1,6 +1,8 @@
 import "./AdminForm.css";
 
-export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCreate, handleChange, formState, page }) {
+export default function AdminForm({ handleRadioButton, handleSubmit, handleDataDelete, handleDataCreate, handleChange, formState, page }) {
+
+    console.log(formState);
 
     if (page === "Home") {
         return (
@@ -418,6 +420,53 @@ export default function AdminForm({ handleSubmit, handleDataDelete, handleDataCr
                         ></input>
                     </label><br></br>
                     <button type="submit">Submit</button>
+                </div>
+                )
+            })}
+            </form>
+        )
+    } else if (page === "Admin") {
+        return (
+            <form id="Admin" onSubmit={handleSubmit}>
+            {formState.Admin.map((adminUser, index) => {
+                return (
+                <div className="card" data-org={adminUser.id} key={index} >
+                    <label>
+                        User: 
+                        <input
+                        type="text"
+                        name="user"
+                        data-form="Admin"
+                        value={adminUser.user ? adminUser.user : ""}
+                        onChange={handleChange}
+                        data-index={index}
+                        ></input>
+                    </label><br></br>
+                    <label>
+                        Password: 
+                        <input
+                        type="text"
+                        name="password"
+                        data-form="Admin"
+                        value={adminUser.password ? adminUser.password : ""}
+                        onChange={handleChange}
+                        data-index={index}
+                        ></input>
+                        
+                    </label><br></br>
+                    <label>
+                        Super: 
+                        <div className="radio">
+                            <input type="radio" value="true" name="super" checked={adminUser.super} onChange={handleRadioButton} data-index={index}></input>
+                            <input type="radio" value="false" name="super" checked={!adminUser.super} onChange={handleRadioButton} data-index={index}></input>
+                        </div>
+                    </label><br></br>
+                    <button type="button" className="remove" data-target="Admin" data-id={adminUser.id} onClick={handleDataDelete}>Remove</button>
+                    <div className="formButtonDiv">
+                    <button type="submit">Submit</button>
+                    <button type="button" id="add" data-target="Admin" onClick={handleDataCreate}>Add New</button>
+                </div>
+                    
                 </div>
                 )
             })}

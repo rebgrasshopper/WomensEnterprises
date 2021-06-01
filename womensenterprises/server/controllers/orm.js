@@ -276,7 +276,8 @@ exports.updateAdminData = async (req, res) => {
   .where({ id: 1 })
   .update(req.body)
   .then(() => {
-      res.json({ message: 'admin data updated' })
+      console.log('updated adminData');
+      res.json({ message: 'admin data updated' });
   })
   .catch(err => {
       res.json({ message: 'There was an error updating admin data' })
@@ -289,6 +290,7 @@ exports.updateHomeData = async (req, res) => {
   .where({ id: 1 })
   .update(req.body)
   .then(() => {
+    console.log('updated homeData');
       res.json({ message: 'home data updated' })
   })
   .catch(err => {
@@ -301,6 +303,7 @@ exports.updateAboutData = async (req, res) => {
   .where({ id: 1 })
   .update(req.body)
   .then(() => {
+    console.log('updated aboutData');
       res.json({ message: 'about data updated' })
   })
   .catch(err => {
@@ -313,6 +316,8 @@ exports.updateCommunityPartnersData = async (req, res) => {
   .where({ id: 1 })
   .update(req.body)
   .then(() => {
+    console.log('updated communityPartnersData');
+
       res.json({ message: 'communityPartners data updated' })
   })
   .catch(err => {
@@ -325,7 +330,8 @@ exports.updateCommunityPartnersListData = async (req, res) => {
   .where({ id: req.body.id })
   .update(req.body.update)
   .then(() => {
-      res.json({ message: 'communityPartnersList data updated' })
+    console.log('updated communityPartnersListData');
+    res.json({ message: 'communityPartnersList data updated' })
   })
   .catch(err => {
       res.json({ message: 'There was an error updating communityPartnersList data' })
@@ -337,7 +343,8 @@ exports.updateGovernmentVendingData = async (req, res) => {
   .where({ id: 1 })
   .update(req.body)
   .then(() => {
-      res.json({ message: 'governmentVending data updated' })
+    console.log('updated governmentVendingData');
+    res.json({ message: 'governmentVending data updated' })
   })
   .catch(err => {
       res.json({ message: 'There was an error updating governmentVending data' })
@@ -349,7 +356,8 @@ exports.updateProductListData = async (req, res) => {
   .where({ id: req.body.id })
   .update(req.body.update)
   .then(() => {
-      res.json({ message: 'ProductList data updated' })
+    console.log('updated productListData');
+    res.json({ message: 'ProductList data updated' })
   })
   .catch(err => {
       res.json({ message: 'There was an error updating ProductList data' })
@@ -361,7 +369,8 @@ exports.updateContactData = async (req, res) => {
   .where({ id: 1 })
   .update(req.body)
   .then(() => {
-      res.json({ message: 'contact data updated' })
+    console.log('updated contactData');
+    res.json({ message: 'contact data updated' })
   })
   .catch(err => {
       res.json({ message: 'There was an error updating contact data' })

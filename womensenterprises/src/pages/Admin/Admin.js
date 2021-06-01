@@ -67,14 +67,21 @@ export default function Form() {
             phone: "",
             facebook: "",
             instagram: "",
-        }
+        },
+        Admin: [
+            {
+                user: "",
+                password: "",
+                super: ""
+            }
+        ]
     })
 
     function handleChange(evt) {
         const formId = evt.target.dataset.form;
         const fieldName = evt.target.name
         const value = evt.target.value;
-        if (formId === "CommunityPartnersList" || formId === "ProductList") {
+        if (formId === "CommunityPartnersList" || formId === "ProductList" || formId === "Admin") {
             const formIndex = evt.target.dataset.index;
             let falseObject = formState[formId];
 
@@ -93,6 +100,18 @@ export default function Form() {
             });
         }
     }
+
+    function handleRadioButton(evt) {
+        console.log(evt.target.dataset.index)
+        let falseForm = formState.Admin;
+        falseForm[evt.target.dataset.index].super = evt.target.value === "true" ? true : false;
+        setFormState({
+            ...formState,
+            Admin: falseForm
+        })
+    }
+
+
     function handleSubmit(evt) {
         evt.preventDefault();
         const target = evt.target.id;
@@ -128,7 +147,7 @@ export default function Form() {
     }
 
     function handleDataUpdate(target) {
-        if (target === "CommunityPartnersList" || target === "ProductList") {
+        if (target === "CommunityPartnersList" || target === "ProductList" || target === "Admin") {
             formState[target].forEach(listItem => {
                 const targetId = listItem.id
                 axios
@@ -197,10 +216,18 @@ export default function Form() {
                                                                 if (response.data[0]) {
                                                                     falseForm.ProductList = response.data;
                                                                 }
-                                                                setFormState({
-                                                                    ...formState,
-                                                                    ...falseForm
-                                                                })
+                                                                axios
+                                                                .get('http://localhost:4001/api/admin')
+                                                                    .then(response => {
+                                                                        if (response.data[0]) {
+                                                                            falseForm.Admin = response.data;
+                                                                        }
+                                                                        setFormState({
+                                                                            ...formState,
+                                                                            ...falseForm
+                                                                        })
+                                                                    })
+                                                                    .catch(error => console.error(`There was an error retrieving home data: ${error}`))
                                                             })
                                                             .catch(error => console.error(`There was an error retrieving home data: ${error}`))
                                                     })
@@ -230,7 +257,7 @@ export default function Form() {
             <Nav />
             
             <div id="adminDiv">
-                <AdminNav handleSubmit = {handleSubmit} handleDataDelete = {handleDataDelete} handleDataCreate = {handleDataCreate} handleChange = {handleChange} formState = {formState} />
+                <AdminNav handleRadioButton = {handleRadioButton} handleSubmit = {handleSubmit} handleDataDelete = {handleDataDelete} handleDataCreate = {handleDataCreate} handleChange = {handleChange} formState = {formState} />
             </div>
             <Footer />
         </div>

@@ -11,3 +11,8 @@
 #chooseLabel {
     margin-right: 20px;
 }
+
+.radio {
+    display: flex;
+    justify-content: flex-start;
+}

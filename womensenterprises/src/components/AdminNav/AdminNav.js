@@ -2,7 +2,7 @@ import './AdminNav.css';
 import { useState } from 'react';
 import AdminForm from '../AdminForm/AdminForm';
 
-export default function AdminNav({ handleSubmit, handleDataDelete, handleDataCreate, handleChange, formState }) {
+export default function AdminNav({ handleRadioButton, handleSubmit, handleDataDelete, handleDataCreate, handleChange, formState }) {
 
     const [page, setPage] = useState("SelectPage");
 
@@ -23,9 +23,10 @@ export default function AdminNav({ handleSubmit, handleDataDelete, handleDataCre
                     <option value = "Government Vending">Government Vending</option>
                     <option value = "ProductList">List of Products</option>
                     <option value = "Contact">Contact</option>
+                    <option value = "Admin">Admin</option>
                 </select>
             </div>
-            <AdminForm  page = {page} handleSubmit = {handleSubmit} handleDataDelete = {handleDataDelete} handleDataCreate = {handleDataCreate} handleChange = {handleChange} formState = {formState}/>
+            <AdminForm  handleRadioButton = {handleRadioButton} page = {page} handleSubmit = {handleSubmit} handleDataDelete = {handleDataDelete} handleDataCreate = {handleDataCreate} handleChange = {handleChange} formState = {formState}/>
         </div>
         )
 }
