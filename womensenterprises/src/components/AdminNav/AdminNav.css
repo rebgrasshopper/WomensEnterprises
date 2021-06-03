@@ -15,4 +15,13 @@
 .radio {
     display: flex;
     justify-content: flex-start;
+    margin-left: 50px;
+}
+
+.radio input {
+    width: min-content;
+}
+
+.radioLabel {
+    justify-content: flex-start;
 }

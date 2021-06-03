@@ -115,6 +115,7 @@ export default function Form() {
     function handleSubmit(evt) {
         evt.preventDefault();
         const target = evt.target.id;
+        console.log("target from handleSubmit():", target)
         handleDataUpdate(target);
         fetchData();
 
@@ -150,6 +151,7 @@ export default function Form() {
         if (target === "CommunityPartnersList" || target === "ProductList" || target === "Admin") {
             formState[target].forEach(listItem => {
                 const targetId = listItem.id
+                console.log("Inside list update, target ID:", targetId)
                 axios
                 .put(`http://localhost:4001/api/update${target}`, {
                     id: targetId,
@@ -162,6 +164,7 @@ export default function Form() {
 
             })
         } else {
+            console.log("inside object update")
             axios
                 .put(`http://localhost:4001/api/update${target}`, formState[target])
                 .then(res => {

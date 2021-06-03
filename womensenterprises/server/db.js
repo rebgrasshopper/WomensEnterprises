@@ -45,6 +45,7 @@ knex.schema
 
 
 knex.select('*').from('admin')
+    .then(data => console.log(data))
     .catch(err => console.error(err));
 
 

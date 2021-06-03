@@ -454,7 +454,7 @@ export default function AdminForm({ handleRadioButton, handleSubmit, handleDataD
                         ></input>
                         
                     </label><br></br>
-                    <label>
+                    <label className="radioLabel">
                         Super: 
                         <div className="radio">
                             <input type="radio" value="true" name="super" checked={adminUser.super} onChange={handleRadioButton} data-index={index}></input>
@@ -462,14 +462,14 @@ export default function AdminForm({ handleRadioButton, handleSubmit, handleDataD
                         </div>
                     </label><br></br>
                     <button type="button" className="remove" data-target="Admin" data-id={adminUser.id} onClick={handleDataDelete}>Remove</button>
-                    <div className="formButtonDiv">
-                    <button type="submit">Submit</button>
-                    <button type="button" id="add" data-target="Admin" onClick={handleDataCreate}>Add New</button>
-                </div>
                     
                 </div>
                 )
             })}
+                <div className="formButtonDiv">
+                    <button type="submit">Submit</button>
+                    <button type="button" id="add" data-target="Admin" onClick={handleDataCreate}>Add New</button>
+                </div>
             </form>
         )
     } else if (page === "Contact") {

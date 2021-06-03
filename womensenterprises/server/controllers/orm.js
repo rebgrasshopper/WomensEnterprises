@@ -17,9 +17,11 @@ exports.adminData = async (req, res) => {
         .select('*')
         .from('admin')
         .then(adminContents => {
+            console.log(adminContents)
             res.json(adminContents)
         })
         .catch(err => {
+            console.log("Error from adminData:", err)
             res.json({message: `There was an error retrieving home content: ${err}`})
         })
 }
@@ -272,14 +274,16 @@ exports.createContactData = async (req, res) => {
 
 
 exports.updateAdminData = async (req, res) => {
+    console.log("inside updateAdminData")
     knex('admin')
-  .where({ id: 1 })
-  .update(req.body)
+  .where({ id: req.body.id })
+  .update(req.body.update)
   .then(() => {
       console.log('updated adminData');
       res.json({ message: 'admin data updated' });
   })
   .catch(err => {
+      console.log("There was an error:", err)
       res.json({ message: 'There was an error updating admin data' })
   })
 }
