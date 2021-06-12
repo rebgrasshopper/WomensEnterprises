@@ -1,0 +1,13 @@
+.ProductsDiv {
+    max-width: 80vw;
+    margin: auto;
+}
+
+.ProductsDiv .textContent {
+    margin: 10px 30px 10px 30px;
+}
+
+.GVDivText {
+    max-width: 80vw;
+    margin: auto;
+}

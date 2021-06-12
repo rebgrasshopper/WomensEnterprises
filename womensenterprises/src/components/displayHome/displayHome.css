@@ -8,13 +8,29 @@
 .textDiv {
     margin: 0px auto 0px auto;
     width: 80vw;
-    padding: 0px 5vw 10vw 5vw;
+    padding: 2vw;
     border-bottom: 1px solid var(--background);
     border-top: 1px solid var(--background);
+    display: flex;
     background-color: var(--foregroundPop);
+    margin-top: 75px;
 }
 
 .textDiv:last-of-type, .textDiv:first-of-type {
     background-color: var(--foreground);
     border: none;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.textDivContent {
+    margin: 0px 55px 0px 55px;
+}
+
+.faceImages {
+    width: 80vw;
+}
+
+.verticalFaces {
+    height: 100%;
 }
