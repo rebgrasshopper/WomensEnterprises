@@ -14,7 +14,9 @@ export default function DisplayGovernmentVending({GovernmentVendingData, Product
                         return <div className = "textContent" key={index}>{element}</div>
                     })}</div>
                 </div>
+                <br/><br/><br/>
                 <div className="ProductsDiv">
+                    To order, contact WE by <a href="/contact">phone or email</a>.
                     {ProductData.map(product => {
                         return (
                                 <div className="card productCard" key={product.prodName}>

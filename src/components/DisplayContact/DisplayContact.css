@@ -15,6 +15,9 @@
     margin: -68px 200px 0px 200px;
     padding: 85px 45px 85px 45px;
     background-color: var(--foregroundPop);
+    border-bottom: 1px solid var(--background);
+    border-top: 1px solid var(--background);
+    
 }
 
 .contactButtons img {
