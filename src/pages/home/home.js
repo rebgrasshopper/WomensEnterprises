@@ -31,7 +31,7 @@ export default function Home(){
 
     const fetchData = async () => {
         axios
-            .get('http://localhost:4001/api/home')
+            .get('/api/home')
             .then(response => {
                 setHomeData(response.data[0])
             })

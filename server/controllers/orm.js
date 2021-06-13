@@ -17,7 +17,6 @@ exports.adminData = async (req, res) => {
         .select('*')
         .from('admin')
         .then(adminContents => {
-            console.log(adminContents)
             res.json(adminContents)
         })
         .catch(err => {
@@ -274,12 +273,10 @@ exports.createContactData = async (req, res) => {
 
 
 exports.updateAdminData = async (req, res) => {
-    console.log("inside updateAdminData")
     knex('admin')
   .where({ id: req.body.id })
   .update(req.body.update)
   .then(() => {
-      console.log('updated adminData');
       res.json({ message: 'admin data updated' });
   })
   .catch(err => {
@@ -294,7 +291,6 @@ exports.updateHomeData = async (req, res) => {
   .where({ id: 1 })
   .update(req.body)
   .then(() => {
-    console.log('updated homeData');
       res.json({ message: 'home data updated' })
   })
   .catch(err => {
@@ -307,7 +303,6 @@ exports.updateAboutData = async (req, res) => {
   .where({ id: 1 })
   .update(req.body)
   .then(() => {
-    console.log('updated aboutData');
       res.json({ message: 'about data updated' })
   })
   .catch(err => {
@@ -320,7 +315,6 @@ exports.updateCommunityPartnersData = async (req, res) => {
   .where({ id: 1 })
   .update(req.body)
   .then(() => {
-    console.log('updated communityPartnersData');
 
       res.json({ message: 'communityPartners data updated' })
   })
@@ -334,7 +328,6 @@ exports.updateCommunityPartnersListData = async (req, res) => {
   .where({ id: req.body.id })
   .update(req.body.update)
   .then(() => {
-    console.log('updated communityPartnersListData');
     res.json({ message: 'communityPartnersList data updated' })
   })
   .catch(err => {
@@ -347,7 +340,6 @@ exports.updateGovernmentVendingData = async (req, res) => {
   .where({ id: 1 })
   .update(req.body)
   .then(() => {
-    console.log('updated governmentVendingData');
     res.json({ message: 'governmentVending data updated' })
   })
   .catch(err => {
@@ -360,7 +352,6 @@ exports.updateProductListData = async (req, res) => {
   .where({ id: req.body.id })
   .update(req.body.update)
   .then(() => {
-    console.log('updated productListData');
     res.json({ message: 'ProductList data updated' })
   })
   .catch(err => {
@@ -373,7 +364,6 @@ exports.updateContactData = async (req, res) => {
   .where({ id: 1 })
   .update(req.body)
   .then(() => {
-    console.log('updated contactData');
     res.json({ message: 'contact data updated' })
   })
   .catch(err => {
