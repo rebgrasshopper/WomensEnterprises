@@ -9,6 +9,7 @@ import Footer from "../../components/Footer/Footer";
 
 export default function Form() {
 
+    const [ user, setUser ] = useState();
 
     const [formState, setFormState] = useState({
         Home: {
@@ -251,16 +252,47 @@ export default function Form() {
 
     }
 
+    function checkUser(username) {
+        for (const userObject of formState.Admin) {
+            if (userObject.user === username) {
+                return true
+            }
+        }
+        return false;
+    }
+
+    function logoutAdmin(){
+        setUser();
+    }
+
+    function loginAdmin(event) {
+        const username = event.target.adminUser.value;
+        const userpassword = event.target.adminPassword.value;
+        console.log(username, userpassword);
+        if (checkUser(username)) {
+            for (const userObject of formState.Admin) {
+                if (userObject.password === userpassword) {
+                    setUser(username);
+                } else {
+                    alert("oh no, wrong password")
+                }
+            }
+        }
+    }
+
     useEffect(() => {
         fetchData()
     }, [])
+
+
+    console.log(user)
 
     return (
         <div className="main">
             <Nav />
             
             <div id="adminDiv">
-                <AdminNav handleRadioButton = {handleRadioButton} handleSubmit = {handleSubmit} handleDataDelete = {handleDataDelete} handleDataCreate = {handleDataCreate} handleChange = {handleChange} formState = {formState} />
+                <AdminNav logoutAdmin={logoutAdmin} loginAdmin={loginAdmin} adminPermission = {checkUser(user)} handleRadioButton = {handleRadioButton} handleSubmit = {handleSubmit} handleDataDelete = {handleDataDelete} handleDataCreate = {handleDataCreate} handleChange = {handleChange} formState = {formState} />
             </div>
             <Footer />
         </div>

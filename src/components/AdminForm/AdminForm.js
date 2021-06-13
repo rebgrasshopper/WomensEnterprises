@@ -1,6 +1,6 @@
 import "./AdminForm.css";
 
-export default function AdminForm({ handleRadioButton, handleSubmit, handleDataDelete, handleDataCreate, handleChange, formState, page }) {
+export default function AdminForm({ logoutAdmin, handleRadioButton, handleSubmit, handleDataDelete, handleDataCreate, handleChange, formState, page }) {
 
     console.log(formState);
 
@@ -519,6 +519,12 @@ export default function AdminForm({ handleRadioButton, handleSubmit, handleDataD
             </form>
         )
     } else {
-        return <div>Please Select a page to edit.</div>
+        return (
+            <div>
+                <div>Please Select a page to edit.</div>
+                <div>or</div>
+                <button type="button" onClick={logoutAdmin}>Log Out</button>
+            </div>
+        )
     }
 }
