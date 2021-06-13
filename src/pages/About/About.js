@@ -17,7 +17,7 @@ export default function About(){
         moreDetailsTitle: "",
         moreDetails: "",
         governmentVendingLinkText: "",
-    })
+    }) 
 
 
     const fetchData = async () => {
