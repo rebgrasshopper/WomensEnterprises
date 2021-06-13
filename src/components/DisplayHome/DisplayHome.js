@@ -1,9 +1,6 @@
 import './displayHome.css';
-import Faces1 from '../../images/icons/WomensFaces3.png';
-import Faces2 from '../../images/icons/WomensFaces2.png';
 import Vert1 from "../../images/icons/VertFaces1.png";
 import Vert2 from "../../images/icons/VertFaces2.png";
-import Vert3 from "../../images/icons/VertFaces3.png";
 
 export default function DisplayHome({homeData}) {
     if (homeData) {

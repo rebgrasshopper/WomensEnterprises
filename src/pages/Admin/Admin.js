@@ -5,11 +5,13 @@ import Nav from '../../components/nav/nav'
 import './Admin.css';
 import AdminNav from '../../components/AdminNav/AdminNav';
 import Footer from "../../components/Footer/Footer";
+import { useAlert } from 'react-alert'
 
 
 export default function Form() {
 
     const [ user, setUser ] = useState();
+    const [ knownUsers, setKnownUsers ] = useState([]);
 
     const [formState, setFormState] = useState({
         Home: {
@@ -78,6 +80,21 @@ export default function Form() {
         ]
     })
 
+    const alert = useAlert();
+
+
+    function showLoginSuccess(){
+        alert.show("Please take care with your changes.");
+    }
+
+    function showLoginFailure(){
+        alert.show("Invalid username/password combination");
+    }
+
+    function showChangeSuccess(){
+        alert.show("Changes saved.");
+    }
+
     function handleChange(evt) {
         const formId = evt.target.dataset.form;
         const fieldName = evt.target.name
@@ -119,7 +136,7 @@ export default function Form() {
         console.log("target from handleSubmit():", target)
         handleDataUpdate(target);
         fetchData();
-
+        showChangeSuccess();
     }   
 
     function handleDataDelete(event) {
@@ -225,6 +242,11 @@ export default function Form() {
                                                                     .then(response => {
                                                                         if (response.data[0]) {
                                                                             falseForm.Admin = response.data;
+                                                                            let knownUserList = []
+                                                                            for (const dataUser of response.data) {
+                                                                                knownUserList.push(dataUser.user);
+                                                                            }
+                                                                            setKnownUsers(knownUserList);
                                                                         }
                                                                         setFormState({
                                                                             ...formState,
@@ -253,8 +275,8 @@ export default function Form() {
     }
 
     function checkUser(username) {
-        for (const userObject of formState.Admin) {
-            if (userObject.user === username) {
+        for (const userThing of knownUsers) {
+            if (userThing === username) {
                 return true
             }
         }
@@ -266,33 +288,32 @@ export default function Form() {
     }
 
     function loginAdmin(event) {
+        event.preventDefault();
         const username = event.target.adminUser.value;
         const userpassword = event.target.adminPassword.value;
-        console.log(username, userpassword);
         if (checkUser(username)) {
             for (const userObject of formState.Admin) {
                 if (userObject.password === userpassword) {
                     setUser(username);
-                } else {
-                    alert("oh no, wrong password")
+                    showLoginSuccess();
+                    return true;
                 }
             }
         }
+        showLoginFailure();
+        return false;
     }
 
     useEffect(() => {
         fetchData()
     }, [])
 
-
-    console.log(user)
-
     return (
         <div className="main">
             <Nav />
             
             <div id="adminDiv">
-                <AdminNav logoutAdmin={logoutAdmin} loginAdmin={loginAdmin} adminPermission = {checkUser(user)} handleRadioButton = {handleRadioButton} handleSubmit = {handleSubmit} handleDataDelete = {handleDataDelete} handleDataCreate = {handleDataCreate} handleChange = {handleChange} formState = {formState} />
+                <AdminNav user={user} checkUser={checkUser} logoutAdmin={logoutAdmin} loginAdmin={loginAdmin} adminPermission = {checkUser(user)} handleRadioButton = {handleRadioButton} handleSubmit = {handleSubmit} handleDataDelete = {handleDataDelete} handleDataCreate = {handleDataCreate} handleChange = {handleChange} formState = {formState} />
             </div>
             <Footer />
         </div>

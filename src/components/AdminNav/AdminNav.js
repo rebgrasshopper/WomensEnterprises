@@ -2,7 +2,7 @@ import './AdminNav.css';
 import { useState } from 'react';
 import AdminForm from '../AdminForm/AdminForm';
 
-export default function AdminNav({ logoutAdmin, loginAdmin, adminPermission, handleRadioButton, handleSubmit, handleDataDelete, handleDataCreate, handleChange, formState }) {
+export default function AdminNav({ checkUser, user, logoutAdmin, loginAdmin, adminPermission, handleRadioButton, handleSubmit, handleDataDelete, handleDataCreate, handleChange, formState }) {
 
     const [page, setPage] = useState("SelectPage");
 
@@ -27,7 +27,7 @@ export default function AdminNav({ logoutAdmin, loginAdmin, adminPermission, han
                         <option value = "Admin">Admin</option>
                     </select>
                 </div>
-                <AdminForm  logoutAdmin={logoutAdmin} handleRadioButton = {handleRadioButton} page = {page} handleSubmit = {handleSubmit} handleDataDelete = {handleDataDelete} handleDataCreate = {handleDataCreate} handleChange = {handleChange} formState = {formState}/>
+                <AdminForm user={user} checkUser={checkUser} logoutAdmin={logoutAdmin} handleRadioButton = {handleRadioButton} page = {page} handleSubmit = {handleSubmit} handleDataDelete = {handleDataDelete} handleDataCreate = {handleDataCreate} handleChange = {handleChange} formState = {formState}/>
             </div>
         )
     } else {

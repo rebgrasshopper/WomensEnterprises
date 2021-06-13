@@ -1,8 +1,7 @@
 import "./AdminForm.css";
 
-export default function AdminForm({ logoutAdmin, handleRadioButton, handleSubmit, handleDataDelete, handleDataCreate, handleChange, formState, page }) {
+export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioButton, handleSubmit, handleDataDelete, handleDataCreate, handleChange, formState, page }) {
 
-    console.log(formState);
 
     if (page === "Home") {
         return (
@@ -442,25 +441,10 @@ export default function AdminForm({ logoutAdmin, handleRadioButton, handleSubmit
                         data-index={index}
                         ></input>
                     </label><br></br>
-                    <label>
-                        Password: 
-                        <input
-                        type="text"
-                        name="password"
-                        data-form="Admin"
-                        value={adminUser.password ? adminUser.password : ""}
-                        onChange={handleChange}
-                        data-index={index}
-                        ></input>
+                    
+                    {(adminUser.user === user || adminUser.user === null || !checkUser(adminUser.user)) && <label>Password: <input type="text" name="password" data-form="Admin" value={adminUser.password ? adminUser.password : ""} onChange={handleChange} data-index={index} ></input></label>}
                         
-                    </label><br></br>
-                    <label className="radioLabel">
-                        Super: 
-                        <div className="radio">
-                            <input type="radio" value="true" name="super" checked={adminUser.super} onChange={handleRadioButton} data-index={index}></input>
-                            <input type="radio" value="false" name="super" checked={!adminUser.super} onChange={handleRadioButton} data-index={index}></input>
-                        </div>
-                    </label><br></br>
+                    <br></br>
                     <button type="button" className="remove" data-target="Admin" data-id={adminUser.id} onClick={handleDataDelete}>Remove</button>
                     
                 </div>
