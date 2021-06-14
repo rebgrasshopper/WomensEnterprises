@@ -9,28 +9,28 @@ import pic4 from '../../images/Landing/pexels-rodnae-productions-7491615.jpg';
 import DisplayHome from '../../components/DisplayHome/DisplayHome';
 import Footer from "../../components/Footer/Footer";
 import './home.css';
-import { API } from 'aws-amplify';
-import { listTodos } from '../../graphql/queries';
-import { createTodo as createTodoMutation, deleteTodo as deleteTodoMutation } from '../../graphql/mutations';
+// import { API } from 'aws-amplify';
+// import { listTodos } from '../../graphql/queries';
+// import { createTodo as createTodoMutation, deleteTodo as deleteTodoMutation } from '../../graphql/mutations';
 
 export default function Home(){
 
 
-    const [todos, setTodos] = useState([]);
+    // const [todos, setTodos] = useState([]);
 
-    async function fetchTodos() {
-        const apiData = await API.graphql({ query: listTodos });
-        setTodos(apiData.data.listTodos.items);
-    }
+    // async function fetchTodos() {
+    //     const apiData = await API.graphql({ query: listTodos });
+    //     setTodos(apiData.data.listTodos.items);
+    // }
 
-    useEffect(()=>{
-        console.log("trying to fetch todos")
-        fetchTodos();
-    }, []);
+    // useEffect(()=>{
+    //     console.log("trying to fetch todos")
+    //     fetchTodos();
+    // }, []);
 
-    useEffect(()=>{
-        console.log("todos:", todos);
-    }, [todos]);
+    // useEffect(()=>{
+    //     console.log("todos:", todos);
+    // }, [todos]);
 
     const [ homeData, setHomeData ] = useState({
         recentMessageTitle: '',
