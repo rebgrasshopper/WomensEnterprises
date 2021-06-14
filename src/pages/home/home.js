@@ -24,11 +24,12 @@ export default function Home(){
     }
 
     useEffect(()=>{
+        console.log("trying to fetch todos")
         fetchTodos();
     }, []);
 
     useEffect(()=>{
-        console.log(todos);
+        console.log("todos:", todos);
     }, [todos]);
 
     const [ homeData, setHomeData ] = useState({
