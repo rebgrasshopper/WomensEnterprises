@@ -16,21 +16,38 @@ import './home.css';
 export default function Home(){
 
 
-    // const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useState([]);
 
-    // async function fetchTodos() {
-    //     const apiData = await API.graphql({ query: listTodos });
-    //     setTodos(apiData.data.listTodos.items);
-    // }
+    async function fetchTodos() {
+        const apiData = await API.graphql({ query: listTodos });
+        setTodos(apiData.data.listTodos.items);
+    }
 
-    // useEffect(()=>{
-    //     console.log("trying to fetch todos")
-    //     fetchTodos();
-    // }, []);
+    
+    async function createTodos(formData) {
+        if (!formData.name || !formData.description) return;
+        await API.graphql({ query: createTodosMutation, variables: { input: formData } });
+        setTodos([ ...todos, formData ]);
+        setFormData(initialFormState);
+    }
+    
+    async function deleteTodo({ id }) {
+        const newTodosArray = todos.filter(todo => todo.id !== id);
+        setTodos(newTodosArray);
+        await API.graphql({ query: deleteTodoMutation, variables: { input: { id } }});
+    }
+    
+    useEffect(()=>{
+        console.log('creating todo')
+        createTotos({name:"A Name", description:"A Description"})
+        console.log("trying to fetch todos")
+        fetchTodos();
+    }, []);
 
-    // useEffect(()=>{
-    //     console.log("todos:", todos);
-    // }, [todos]);
+    useEffect(()=>{
+        console.log("todos:", todos);
+    }, [todos]);
+
 
     const [ homeData, setHomeData ] = useState({
         recentMessageTitle: '',
