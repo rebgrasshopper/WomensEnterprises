@@ -7,6 +7,10 @@ import GovernmentVending from './pages/GovernmentVending/GovernmentVending';
 import Home from './pages/home/home';
 import Admin from './pages/Admin/Admin';
 import './App.css';
+import Amplify, { API, graphqlOperation } from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
+
 
 function App() {
   
