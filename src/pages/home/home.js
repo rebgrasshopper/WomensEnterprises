@@ -9,44 +9,8 @@ import pic4 from '../../images/Landing/pexels-rodnae-productions-7491615.jpg';
 import DisplayHome from '../../components/DisplayHome/DisplayHome';
 import Footer from "../../components/Footer/Footer";
 import './home.css';
-// import { API } from 'aws-amplify';
-// import { listTodos } from '../../graphql/queries';
-// import { createTodo as createTodoMutation, deleteTodo as deleteTodoMutation } from '../../graphql/mutations';
 
 export default function Home(){
-
-
-    const [todos, setTodos] = useState([]);
-
-    async function fetchTodos() {
-        const apiData = await API.graphql({ query: listTodos });
-        setTodos(apiData.data.listTodos.items);
-    }
-
-    
-    async function createTodos(formData) {
-        if (!formData.name || !formData.description) return;
-        await API.graphql({ query: createTodosMutation, variables: { input: formData } });
-        setTodos([ ...todos, formData ]);
-        setFormData(initialFormState);
-    }
-    
-    async function deleteTodo({ id }) {
-        const newTodosArray = todos.filter(todo => todo.id !== id);
-        setTodos(newTodosArray);
-        await API.graphql({ query: deleteTodoMutation, variables: { input: { id } }});
-    }
-    
-    useEffect(()=>{
-        console.log('creating todo')
-        createTotos({name:"A Name", description:"A Description"})
-        console.log("trying to fetch todos")
-        fetchTodos();
-    }, []);
-
-    useEffect(()=>{
-        console.log("todos:", todos);
-    }, [todos]);
 
 
     const [ homeData, setHomeData ] = useState({
