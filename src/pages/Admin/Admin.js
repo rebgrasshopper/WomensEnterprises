@@ -85,6 +85,7 @@ export default function Form() {
     useEffect(() => {
         console.log("current user:", user)
     }, [user])
+    
     function showLoginSuccess(){
         alert.show("Please take care with your changes.");
     }
@@ -246,6 +247,7 @@ export default function Form() {
 
     function logoutAdmin(){
         setUser();
+        setadminPermission(false);
     }
 
     function loginAdmin(event) {
