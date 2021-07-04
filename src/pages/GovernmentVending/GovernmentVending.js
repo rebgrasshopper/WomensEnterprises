@@ -14,13 +14,13 @@ export default function GovernmentVending(){
 
     const fetchData = async () => {
         axios
-            .get('http://localhost:4001/api/governmentVending')
+            .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/governmentVending')
             .then(response => {
-                setGovernmentVendingData(response.data[0])
+                setGovernmentVendingData(response.data)
             })
             .catch(error => console.error(`There was an error retrieving data: ${error}`))
         axios
-            .get('http://localhost:4001/api/productList')
+            .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/productList')
             .then(response => {
                 setProductData(response.data)
             })
