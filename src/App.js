@@ -3,7 +3,6 @@ import About from './pages/About/About';
 import CommunityPartners from './pages/CommunityPartners/CommunityPartners';
 import Contact from './pages/Contact/Contact';
 import GovernmentVending from './pages/GovernmentVending/GovernmentVending';
-
 import Home from './pages/home/home';
 import Admin from './pages/Admin/Admin';
 import './App.css';
