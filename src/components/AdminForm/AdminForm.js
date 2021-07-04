@@ -12,7 +12,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     name="recentMessageTitle"
                     data-form="Home"
-                    value={formState.Home.recentMessageTitle ? formState.Home.recentMessageTitle : ""}
+                    value={formState.home.recentMessageTitle ? formState.home.recentMessageTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -23,7 +23,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     rows="10"
                     name="recentMessage"
                     data-form="Home"
-                    value={formState.Home.recentMessage ? formState.Home.recentMessage : ""}
+                    value={formState.home.recentMessage ? formState.home.recentMessage : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -33,7 +33,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     name="missionTitle"
                     data-form="Home"
-                    value={formState.Home.missionTitle ? formState.Home.missionTitle : ""}
+                    value={formState.home.missionTitle ? formState.home.missionTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -44,7 +44,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     rows="10"
                     name="mission"
                     data-form="Home"
-                    value={formState.Home.mission ? formState.Home.mission : ""}
+                    value={formState.home.mission ? formState.home.mission : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -54,7 +54,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     name="resultsTitle"
                     data-form="Home"
-                    value={formState.Home.resultsTitle ? formState.Home.resultsTitle : ""}
+                    value={formState.home.resultsTitle ? formState.home.resultsTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -65,7 +65,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     rows="10"
                     name="results"
                     data-form="Home"
-                    value={formState.Home.results ? formState.Home.results : ""}
+                    value={formState.home.results ? formState.home.results : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -81,7 +81,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     name="missionTitle"
                     data-form="About"
-                    value={formState.About.missionTitle ? formState.About.missionTitle : ""}
+                    value={formState.about.missionTitle ? formState.about.missionTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -92,7 +92,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     rows="10"
                     name="mission"
                     data-form="About"
-                    value={formState.About.mission ? formState.About.mission : ""}
+                    value={formState.about.mission ? formState.about.mission : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -102,7 +102,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     name="founderTitle"
                     data-form="About"
-                    value={formState.About.founderTitle ? formState.About.founderTitle : ""}
+                    value={formState.about.founderTitle ? formState.about.founderTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -113,7 +113,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     rows="10"
                     name="founderAbout"
                     data-form="About"
-                    value={formState.About.founderAbout ? formState.About.founderAbout : ""}
+                    value={formState.about.founderAbout ? formState.about.founderAbout : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -123,7 +123,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     name="founderImgUrl"
                     data-form="About"
-                    value={formState.About.founderImgUrl ? formState.About.founderImgUrl : ""}
+                    value={formState.about.founderImgUrl ? formState.about.founderImgUrl : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -134,7 +134,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     rows="10"
                     name="communityPartnersLinkText"
                     data-form="About"
-                    value={formState.About.communityPartnersLinkText ? formState.About.communityPartnersLinkText : ""}
+                    value={formState.about.communityPartnersLinkText ? formState.about.communityPartnersLinkText : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -144,7 +144,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     name="moreDetailsTitle"
                     data-form="About"
-                    value={formState.About.moreDetailsTitle ? formState.About.moreDetailsTitle : ""}
+                    value={formState.about.moreDetailsTitle ? formState.about.moreDetailsTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -155,7 +155,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     rows="10"
                     name="moreDetails"
                     data-form="About"
-                    value={formState.About.moreDetails ? formState.About.moreDetails : ""}
+                    value={formState.about.moreDetails ? formState.about.moreDetails : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -166,7 +166,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     rows="10"
                     name="governmentVendingLinkText"
                     data-form="About"
-                    value={formState.About.governmentVendingLinkText ? formState.About.governmentVendingLinkText : ""}
+                    value={formState.about.governmentVendingLinkText ? formState.about.governmentVendingLinkText : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -182,7 +182,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     name="pageTitle"
                     data-form="CommunityPartners"
-                    value={formState.CommunityPartners.pageTitle ? formState.CommunityPartners.pageTitle : ""}
+                    value={formState.communityPartners.pageTitle ? formState.communityPartners.pageTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -193,7 +193,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     rows="10"
                     name="endBlurb"
                     data-form="CommunityPartners"
-                    value={formState.CommunityPartners.endBlurb ? formState.CommunityPartners.endBlurb : ""}
+                    value={formState.communityPartners.endBlurb ? formState.communityPartners.endBlurb : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -204,7 +204,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     rows="10"
                     name="contactLinkText"
                     data-form="CommunityPartners"
-                    value={formState.CommunityPartners.contactLinkText ? formState.CommunityPartners.contactLinkText : ""}
+                    value={formState.communityPartners.contactLinkText ? formState.communityPartners.contactLinkText : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -214,7 +214,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
     } else if (page === "CommunityPartnersList") {
         return (
             <form id="CommunityPartnersList" onSubmit={handleSubmit}>
-            {formState.CommunityPartnersList.map((partner, index) => {
+            {formState.communityPartnersList.map((partner, index) => {
                 return (
                 <div className="card" data-org={partner.id} key={partner.id} >
                     <label>
@@ -282,7 +282,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     name="pageTitle"
                     data-form="GovernmentVending"
-                    value={formState.GovernmentVending.pageTitle ? formState.GovernmentVending.pageTitle : ""}
+                    value={formState.governmentVending.pageTitle ? formState.governmentVending.pageTitle : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -293,7 +293,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     rows="10"
                     name="aboutVending"
                     data-form="GovernmentVending"
-                    value={formState.GovernmentVending.aboutVending ? formState.GovernmentVending.aboutVending : ""}
+                    value={formState.governmentVending.aboutVending ? formState.governmentVending.aboutVending : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -304,7 +304,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     rows="10"
                     name="productsIntro"
                     data-form="GovernmentVending"
-                    value={formState.GovernmentVending.productsIntro ? formState.GovernmentVending.productsIntro : ""}
+                    value={formState.governmentVending.productsIntro ? formState.governmentVending.productsIntro : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -315,7 +315,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     rows="10"
                     name="contactLinkText"
                     data-form="GovernmentVending"
-                    value={formState.GovernmentVending.contactLinkText ? formState.GovernmentVending.contactLinkText : ""}
+                    value={formState.governmentVending.contactLinkText ? formState.governmentVending.contactLinkText : ""}
                     onChange={handleChange}
                     ></textarea>
                 </label><br></br>
@@ -325,7 +325,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
     } else if (page === "ProductList") {
         return (
             <form id="ProductList" onSubmit={handleSubmit}>
-            {formState.ProductList.map((product, index) => {
+            {formState.productList.map((product, index) => {
                 return (
                 <div className="card" data-org={product.id} key={product.id} >
                     <label>
@@ -427,7 +427,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
     } else if (page === "Admin") {
         return (
             <form id="Admin" onSubmit={handleSubmit}>
-            {formState.Admin.map((adminUser, index) => {
+            {formState.admin.map((adminUser, index) => {
                 return (
                 <div className="card" data-org={adminUser.id} key={index} >
                     <label>
@@ -465,7 +465,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     name="email"
                     data-form="Contact"
-                    value={formState.Contact.email ? formState.Contact.email : ""}
+                    value={formState.contact.email ? formState.contact.email : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -475,7 +475,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     name="phone"
                     data-form="Contact"
-                    value={formState.Contact.phone ? formState.Contact.phone : ""}
+                    value={formState.contact.phone ? formState.contact.phone : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -485,7 +485,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     name="facebook"
                     data-form="Contact"
-                    value={formState.Contact.facebook ? formState.Contact.facebook : ""}
+                    value={formState.contact.facebook ? formState.contact.facebook : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>
@@ -495,7 +495,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     name="instagram"
                     data-form="Contact"
-                    value={formState.Contact.instagram ? formState.Contact.instagram : ""}
+                    value={formState.contact.instagram ? formState.contact.instagram : ""}
                     onChange={handleChange}
                     ></input>
                 </label><br></br>

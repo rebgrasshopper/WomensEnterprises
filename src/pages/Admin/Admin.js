@@ -11,10 +11,10 @@ import { useAlert } from 'react-alert'
 export default function Form() {
 
     const [ user, setUser ] = useState();
-    const [ knownUsers, setKnownUsers ] = useState([]);
+    const [ adminPermission, setadminPermission ] = useState(false);
 
     const [formState, setFormState] = useState({
-        Home: {
+        home: {
             recentMessageTitle: "",
             recentMessage: "",
             missionTitle: "",
@@ -22,7 +22,7 @@ export default function Form() {
             resultsTitle:"",
             results:""
         },
-        About: {
+        about: {
             missionTitle: "",
             mission: "",
             founderTitle: "",
@@ -33,12 +33,12 @@ export default function Form() {
             moreDetails: "",
             governmentVendingLinkText: "",
         },
-        CommunityPartners: {
+        communityPartners: {
             pageTitle: "",
             endBlurb: "",
             contactLinkText: "",
         },
-        CommunityPartnersList: [
+        communityPartnersList: [
             {
                 orgName: "",
                 orgUrl: "",
@@ -46,14 +46,14 @@ export default function Form() {
                 orgBlurb: "",
             }
         ],
-        GovernmentVending: {
+        governmentVending: {
             pageTitle: "",
             aboutVending: "",
             productsIntro: "",
             productsOutro: "",
             contactLinkText: "",
         },
-        ProductList: [
+        productList: [
             {
                 prodName: "",
                 prodImgLink: "",
@@ -65,17 +65,16 @@ export default function Form() {
                 prodPrice1000: "",
             }
         ],
-        Contact: {
+        contact: {
             email: "",
             phone: "",
             facebook: "",
             instagram: "",
         },
-        Admin: [
+        admin: [
             {
                 user: "",
-                password: "",
-                super: ""
+                password: ""
             }
         ]
     })
@@ -83,6 +82,9 @@ export default function Form() {
     const alert = useAlert();
 
 
+    useEffect(() => {
+        console.log("current user:", user)
+    }, [user])
     function showLoginSuccess(){
         alert.show("Please take care with your changes.");
     }
@@ -194,92 +196,51 @@ export default function Form() {
 
 
     const fetchData = async () => {
-        const falseForm = formState;
+
         axios
-            .get('http://localhost:4001/api/home')
+        .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/')
             .then(response => {
-                if (response.data[0]) {
-                    falseForm.Home = response.data[0];
-                }
-                axios
-                    .get('http://localhost:4001/api/about')
-                    .then(response => {
-                        if (response.data[0]) {
-                            falseForm.About = response.data[0];
-                        }
-                        axios
-                            .get('http://localhost:4001/api/communityPartners')
-                            .then(response => {
-                                if (response.data[0]) {
-                                    falseForm.CommunityPartners = response.data[0];
-                                }
-                                axios
-                                    .get('http://localhost:4001/api/governmentVending')
-                                    .then(response => {
-                                        if (response.data[0]) {
-                                            falseForm.GovernmentVending = response.data[0];
-                                        }
-                                        axios
-                                            .get('http://localhost:4001/api/contact')
-                                            .then(response => {
-                                                if (response.data[0]) {
-                                                    falseForm.Contact = response.data[0];
-                                                }
-                                                axios
-                                                .get('http://localhost:4001/api/communityPartnersList')
-                                                    .then(response => {
-                                                        if (response.data[0]) {
-                                                            falseForm.CommunityPartnersList = response.data;
-                                                        }
-                                                        axios
-                                                        .get('http://localhost:4001/api/productList')
-                                                            .then(response => {
-                                                                if (response.data[0]) {
-                                                                    falseForm.ProductList = response.data;
-                                                                }
-                                                                axios
-                                                                .get('http://localhost:4001/api/admin')
-                                                                    .then(response => {
-                                                                        if (response.data[0]) {
-                                                                            falseForm.Admin = response.data;
-                                                                            let knownUserList = []
-                                                                            for (const dataUser of response.data) {
-                                                                                knownUserList.push(dataUser.user);
-                                                                            }
-                                                                            setKnownUsers(knownUserList);
-                                                                        }
-                                                                        setFormState({
-                                                                            ...formState,
-                                                                            ...falseForm
-                                                                        })
-                                                                    })
-                                                                    .catch(error => console.error(`There was an error retrieving home data: ${error}`))
-                                                            })
-                                                            .catch(error => console.error(`There was an error retrieving home data: ${error}`))
-                                                    })
-                                                    .catch(error => console.error(`There was an error retrieving home data: ${error}`))
-                                            })
-                                            .catch(error => console.error(`There was an error retrieving home data: ${error}`))
-                                    })
-                                    .catch(error => console.error(`There was an error retrieving home data: ${error}`))
-                            })
-                            .catch(error => console.error(`There was an error retrieving home data: ${error}`))
-                    })
-                    .catch(error => console.error(`There was an error retrieving home data: ${error}`))
+                console.log(response.data)
+                setFormState(response.data)
+
             })
-            .catch(error => console.error(`There was an error retrieving home data: ${error}`))
+            .catch(error => console.error(`There was an error retrieving data: ${error}`))
+
         
 
 
 
     }
 
-    function checkUser(username) {
-        for (const userThing of knownUsers) {
-            if (userThing === username) {
-                return true
-            }
-        }
+    function checkUser(username, userpassword, called=false) {
+        axios
+        .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/admin/'+username)
+            .then(response => {
+    
+                for (const userThing of response.data) {
+                    if (userThing.user === username) {
+                        setUser(userThing.user)
+                        console.log("checkUser sending back user data for", userThing.user)
+                            console.log("now in loginAdmin")
+                            for (const userThing of response.data) {
+                                console.log(userThing)
+                                if (userThing.user === username && userThing.password === userpassword) {
+                                    console.log("Found User!")
+                                    setUser(userThing.user);
+                                    setadminPermission(true);
+                                    showLoginSuccess();
+                                    return true
+                                }
+                            }
+                        if (called){
+                            showLoginFailure();
+                        }
+                        return false;
+                    }
+                }
+            })
+            .catch(error => console.error(`There was an error retrieving data: ${error}`))
+        
         return false;
     }
 
@@ -291,17 +252,8 @@ export default function Form() {
         event.preventDefault();
         const username = event.target.adminUser.value;
         const userpassword = event.target.adminPassword.value;
-        if (checkUser(username)) {
-            for (const userObject of formState.Admin) {
-                if (userObject.password === userpassword) {
-                    setUser(username);
-                    showLoginSuccess();
-                    return true;
-                }
-            }
-        }
-        showLoginFailure();
-        return false;
+        checkUser(username, userpassword, true);
+        console.log("checkking user data")
     }
 
     useEffect(() => {
@@ -313,7 +265,7 @@ export default function Form() {
             <Nav />
             
             <div id="adminDiv">
-                <AdminNav user={user} checkUser={checkUser} logoutAdmin={logoutAdmin} loginAdmin={loginAdmin} adminPermission = {checkUser(user)} handleRadioButton = {handleRadioButton} handleSubmit = {handleSubmit} handleDataDelete = {handleDataDelete} handleDataCreate = {handleDataCreate} handleChange = {handleChange} formState = {formState} />
+                <AdminNav user={user} checkUser={checkUser} logoutAdmin={logoutAdmin} loginAdmin={loginAdmin} adminPermission = {adminPermission} handleRadioButton = {handleRadioButton} handleSubmit = {handleSubmit} handleDataDelete = {handleDataDelete} handleDataCreate = {handleDataCreate} handleChange = {handleChange} formState = {formState} />
             </div>
             <Footer />
         </div>
