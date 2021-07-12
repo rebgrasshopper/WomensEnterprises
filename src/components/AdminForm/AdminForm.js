@@ -5,7 +5,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
 
     if (page === "Home") {
         return (
-            <form id="Home" onSubmit={handleSubmit}>
+            <form id="home" onSubmit={handleSubmit}>
                 <label>
                     What's going on with WE? Title: 
                     <input
@@ -74,7 +74,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
         )
     } else if (page === "About") {
         return (
-            <form id="About" onSubmit={handleSubmit}>
+            <form id="about" onSubmit={handleSubmit}>
                 <label>
                     About Page Mission Title: 
                     <input
@@ -175,7 +175,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
         )
     } else if (page === "Community Partners") {
         return (
-            <form id="CommunityPartners" onSubmit={handleSubmit}>
+            <form id="communityPartners" onSubmit={handleSubmit}>
                 <label>
                     Community Partners Page Title: 
                     <input
@@ -213,7 +213,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
         )
     } else if (page === "CommunityPartnersList") {
         return (
-            <form id="CommunityPartnersList" onSubmit={handleSubmit}>
+            <form id="communityPartnersList" onSubmit={handleSubmit}>
             {formState.communityPartnersList.map((partner, index) => {
                 return (
                 <div className="card" data-org={partner.id} key={partner.id} >
@@ -263,19 +263,19 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                         data-index={index}
                         ></textarea>
                     </label><br></br>
-                    <button type="button" className="remove" data-target="CommunityPartnersList" data-id={partner.id} onClick={handleDataDelete}>Remove</button>
+                    <button type="button" className="remove" data-target="communityPartnersList" data-id={partner.id} onClick={handleDataDelete}>Remove</button>
                 </div>
                 )
             })}
                 <div className="formButtonDiv">
                     <button type="submit">Submit</button>
-                    <button type="button" id="add" data-target="CommunityPartnersList" onClick={handleDataCreate}>Add New</button>
+                    <button type="button" id="add" data-target="communityPartnersList" onClick={handleDataCreate}>Add New</button>
                 </div>
             </form>
         )
     } else if (page === "Government Vending") {
         return (
-            <form id="GovernmentVending" onSubmit={handleSubmit}>
+            <form id="governmentVending" onSubmit={handleSubmit}>
                 <label>
                     Government Vending Page Title: 
                     <input
@@ -324,7 +324,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
         )
     } else if (page === "ProductList") {
         return (
-            <form id="ProductList" onSubmit={handleSubmit}>
+            <form id="productList" onSubmit={handleSubmit}>
             {formState.productList.map((product, index) => {
                 return (
                 <div className="card" data-org={product.id} key={product.id} >
@@ -425,8 +425,9 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
             </form>
         )
     } else if (page === "Admin") {
+        console.log(formState.admin)
         return (
-            <form id="Admin" onSubmit={handleSubmit}>
+            <form id="admin" onSubmit={handleSubmit}>
             {formState.admin.map((adminUser, index) => {
                 return (
                 <div className="card" data-org={adminUser.id} key={index} >
@@ -442,23 +443,25 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                         ></input>
                     </label><br></br>
                     
-                    {(adminUser.user === user || adminUser.user === null || !checkUser(adminUser.user)) && <label>Password: <input type="text" name="password" data-form="Admin" value={adminUser.password ? adminUser.password : ""} onChange={handleChange} data-index={index} ></input></label>}
+                    {(adminUser.user === user || adminUser.user === null) 
+                    && 
+                    <label>Password: <input type="text" name="password" data-form="Admin" value={adminUser.password ? adminUser.password : ""} onChange={handleChange} data-index={index} ></input></label>}
                         
                     <br></br>
-                    <button type="button" className="remove" data-target="Admin" data-id={adminUser.id} onClick={handleDataDelete}>Remove</button>
+                    <button type="button" className="remove" data-target="admin" data-id={adminUser.id} onClick={handleDataDelete}>Remove</button>
                     
                 </div>
                 )
             })}
                 <div className="formButtonDiv">
                     <button type="submit">Submit</button>
-                    <button type="button" id="add" data-target="Admin" onClick={handleDataCreate}>Add New</button>
+                    <button type="button" id="add" data-target="admin" onClick={handleDataCreate}>Add New</button>
                 </div>
             </form>
         )
     } else if (page === "Contact") {
         return (
-            <form id="Contact" onSubmit={handleSubmit}>
+            <form id="contact" onSubmit={handleSubmit}>
                 <label>
                     Email: 
                     <input

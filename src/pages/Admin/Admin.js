@@ -136,7 +136,7 @@ export default function Form() {
     function handleSubmit(evt) {
         evt.preventDefault();
         const target = evt.target.id;
-        console.log("target from handleSubmit():", target)
+        console.log("handleSubmit Target:", target, formState[target])
         handleDataUpdate(target);
         fetchData();
         showChangeSuccess();
@@ -153,6 +153,7 @@ export default function Form() {
             }
           })
             .then(res => {
+                console.log(res)
                 fetchData();
             })
             .catch(error => console.error(`There was an error deleting the data`))
@@ -163,6 +164,7 @@ export default function Form() {
         axios
             .post(`http://localhost:4001/api/create${target}`, formState[target])
             .then(res => {
+                console.log(res)
                 fetchData();
             })
             .catch(error => console.error(`There was an error creating the data`))
@@ -174,11 +176,12 @@ export default function Form() {
                 const targetId = listItem.id
                 console.log("Inside list update, target ID:", targetId)
                 axios
-                .put(`http://localhost:4001/api/update${target}`, {
+                .put(`https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com`, {
                     id: targetId,
                     update: listItem
                 })
                 .then(res => {
+                    console.log(res.data.body)
                     fetchData();
                 })
                 .catch(error => console.error(`There was an error updating the data: ${error}`))
@@ -186,9 +189,12 @@ export default function Form() {
             })
         } else {
             console.log("inside object update")
+            console.log("type of data sent:", typeof formState[target])
             axios
-                .put(`http://localhost:4001/api/update${target}`, formState[target])
+                .put(`https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com`, formState[target])
                 .then(res => {
+                    console.log("RESULT:", res.data);
+                    console.log("typeof RESULT:", typeof res.data);
                     fetchData();
                 })
                 .catch(error => console.error(`There was an error updating the data: ${error}`))
