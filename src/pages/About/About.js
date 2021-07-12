@@ -22,9 +22,10 @@ export default function About(){
 
     const fetchData = async () => {
         axios
-            .get('http://localhost:4001/api/about')
+            .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/about')
             .then(response => {
-                setAboutData(response.data[0])
+                console.log(response.data)
+                setAboutData(response.data)
             })
             .catch(error => console.error(`There was an error retrieving data: ${error}`))
     }

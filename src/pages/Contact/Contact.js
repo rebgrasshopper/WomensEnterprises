@@ -11,9 +11,9 @@ export default function Contact(){
 
     const fetchData = async () => {
         axios
-            .get('http://localhost:4001/api/contact')
+            .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/contact')
             .then(response => {
-                setContactData(response.data[0])
+                setContactData(response.data)
             })
             .catch(error => console.error(`There was an error retrieving data: ${error}`))
     }

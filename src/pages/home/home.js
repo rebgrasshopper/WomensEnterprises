@@ -32,9 +32,9 @@ export default function Home(){
 
     const fetchData = async () => {
         axios
-            .get('http://localhost:4001/api/home')
+            .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/home')
             .then(response => {
-                setHomeData(response.data[0])
+                setHomeData(response.data)
             })
             .catch(error => console.error(`There was an error retrieving data: ${error}`))
     }
