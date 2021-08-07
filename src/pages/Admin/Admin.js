@@ -176,7 +176,7 @@ export default function Form() {
                 const targetId = listItem.id
                 console.log("Inside list update, target ID:", targetId)
                 axios
-                .put(`https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com`, {
+                .put(`https://dn1jzsyzm5.execute-api.us-east-2.amazonaws.com`, {
                     id: targetId,
                     update: listItem
                 })
@@ -191,7 +191,7 @@ export default function Form() {
             console.log("inside object update")
             console.log("type of data sent:", typeof formState[target])
             axios
-                .put(`https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com`, formState[target])
+                .put(`https://dn1jzsyzm5.execute-api.us-east-2.amazonaws.com`, formState[target])
                 .then(res => {
                     console.log("RESULT:", res.data);
                     console.log("typeof RESULT:", typeof res.data);
@@ -205,7 +205,7 @@ export default function Form() {
     const fetchData = async () => {
 
         axios
-        .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/')
+        .get('https://dn1jzsyzm5.execute-api.us-east-2.amazonaws.com/')
             .then(response => {
                 console.log(response.data)
                 setFormState(response.data)
@@ -221,7 +221,7 @@ export default function Form() {
 
     function checkUser(username, userpassword, called=false) {
         axios
-        .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/admin/'+username)
+        .get('https://dn1jzsyzm5.execute-api.us-east-2.amazonaws.com/admin/'+username)
             .then(response => {
     
                 for (const userThing of response.data) {
