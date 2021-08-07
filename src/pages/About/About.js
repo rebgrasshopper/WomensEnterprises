@@ -22,7 +22,7 @@ export default function About(){
 
     const fetchData = async () => {
         axios
-            .get('https://dn1jzsyzm5.execute-api.us-east-2.amazonaws.com/about')
+            .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/about')
             .then(response => {
                 console.log(response.data)
                 setAboutData(response.data)
