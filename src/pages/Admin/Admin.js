@@ -81,6 +81,9 @@ export default function Form() {
 
     const alert = useAlert();
 
+    useEffect(()=>{
+        console.log("Newly Set Form:", formState)
+    }, [formState])
 
     useEffect(() => {
         console.log("current user:", user)
@@ -102,22 +105,26 @@ export default function Form() {
         const formId = evt.target.dataset.form;
         const fieldName = evt.target.name
         const value = evt.target.value;
-        if (formId === "CommunityPartnersList" || formId === "ProductList" || formId === "Admin") {
+        if (formId === "communityPartnersList" || formId === "productList" || formId === "admin") {
             const formIndex = evt.target.dataset.index;
             let falseObject = formState[formId];
-
-            falseObject[formIndex][fieldName] = value;
+            console.log('keys', Object.keys(falseObject), 'object:', falseObject)
+            console.log('formIndex:', formIndex, 'fieldName:', fieldName, 'value:', value)
+            for (const item of falseObject){
+                if (item.id == formIndex) {
+                    console.log('changed object index', formIndex)
+                    item[fieldName] = value
+                }
+            }
             setFormState({
                 ...formState,
                 [formId]: falseObject
             });
         } else {
+            let falseObject = formState;
+            falseObject[formId.toLowerCase()][fieldName] = value;
             setFormState({
-                ...formState,
-                [formId]: {
-                    ...formState[formId],
-                    [fieldName]: value
-                }
+                ...falseObject
             });
         }
     }
@@ -171,17 +178,16 @@ export default function Form() {
     }
 
     function handleDataUpdate(target) {
-        if (target === "CommunityPartnersList" || target === "ProductList" || target === "Admin") {
+        if (target === "communityPartnersList" || target === "productList" || target === "admin") {
             formState[target].forEach(listItem => {
                 const targetId = listItem.id
                 console.log("Inside list update, target ID:", targetId)
+                console.log("listItem", listItem)
+                listItem.tableName = target;
                 axios
-                .put(`https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com`, {
-                    id: targetId,
-                    update: listItem
-                })
+                .put(`https://7w710d6s8g.execute-api.us-west-2.amazonaws.com`, listItem)
                 .then(res => {
-                    console.log(res.data.body)
+                    console.log('data from updating!', res.data.body)
                     fetchData();
                 })
                 .catch(error => console.error(`There was an error updating the data: ${error}`))
@@ -189,12 +195,13 @@ export default function Form() {
             })
         } else {
             console.log("inside object update")
-            console.log("type of data sent:", typeof formState[target])
+            let sendData = formState[target]
+            sendData.tableName = target;
+            console.log("data sent:", sendData)
             axios
-                .put(`https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com`, formState[target])
+                .put(`https://7w710d6s8g.execute-api.us-west-2.amazonaws.com`, formState[target])
                 .then(res => {
-                    console.log("RESULT:", res.data);
-                    console.log("typeof RESULT:", typeof res.data);
+                    console.log("RESULT:", res);
                     fetchData();
                 })
                 .catch(error => console.error(`There was an error updating the data: ${error}`))
@@ -205,7 +212,7 @@ export default function Form() {
     const fetchData = async () => {
 
         axios
-        .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/')
+        .get('https://7w710d6s8g.execute-api.us-west-2.amazonaws.com/')
             .then(response => {
                 console.log(response.data)
                 setFormState(response.data)
@@ -221,7 +228,7 @@ export default function Form() {
 
     function checkUser(username, userpassword, called=false) {
         axios
-        .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/admin/'+username)
+        .get('https://7w710d6s8g.execute-api.us-west-2.amazonaws.com/admin/'+username)
             .then(response => {
     
                 for (const userThing of response.data) {

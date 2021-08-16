@@ -13,11 +13,11 @@ export default function CommunityPartners(){
 
     const fetchData = async () => {
         axios
-            .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/communityPartners')
+            .get('https://7w710d6s8g.execute-api.us-west-2.amazonaws.com/communityPartners')
             .then(response => {
                 setCommunityPartnersData(response.data)
                 axios
-                .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/communityPartnersList')
+                .get('https://7w710d6s8g.execute-api.us-west-2.amazonaws.com/communityPartnersList')
                 .then(response => {
                     setCommunityPartnersList(response.data)
                 })

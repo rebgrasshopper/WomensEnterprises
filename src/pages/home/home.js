@@ -32,7 +32,7 @@ export default function Home(){
 
     const fetchData = async () => {
         axios
-            .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/home')
+            .get('https://7w710d6s8g.execute-api.us-west-2.amazonaws.com/home')
             .then(response => {
                 setHomeData(response.data)
             })

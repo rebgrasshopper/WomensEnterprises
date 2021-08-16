@@ -6,6 +6,9 @@ export default function AdminNav({ checkUser, user, logoutAdmin, loginAdmin, adm
 
     const [page, setPage] = useState("SelectPage");
 
+
+    console.log("AdminNav:", formState)
+
     function handlePageChoice(e){
         setPage(e.target.value)
     }

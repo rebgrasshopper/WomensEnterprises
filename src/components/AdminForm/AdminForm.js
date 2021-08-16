@@ -4,6 +4,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
 
 
     if (page === "Home") {
+        console.log("AdminForm:", formState.home)
         return (
             <form id="home" onSubmit={handleSubmit}>
                 <label>
@@ -80,7 +81,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     <input
                     type="text"
                     name="missionTitle"
-                    data-form="About"
+                    data-form="about"
                     value={formState.about.missionTitle ? formState.about.missionTitle : ""}
                     onChange={handleChange}
                     ></input>
@@ -91,7 +92,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     rows="10"
                     name="mission"
-                    data-form="About"
+                    data-form="about"
                     value={formState.about.mission ? formState.about.mission : ""}
                     onChange={handleChange}
                     ></textarea>
@@ -101,7 +102,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     <input
                     type="text"
                     name="founderTitle"
-                    data-form="About"
+                    data-form="about"
                     value={formState.about.founderTitle ? formState.about.founderTitle : ""}
                     onChange={handleChange}
                     ></input>
@@ -112,7 +113,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     rows="10"
                     name="founderAbout"
-                    data-form="About"
+                    data-form="about"
                     value={formState.about.founderAbout ? formState.about.founderAbout : ""}
                     onChange={handleChange}
                     ></textarea>
@@ -122,7 +123,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     <input
                     type="text"
                     name="founderImgUrl"
-                    data-form="About"
+                    data-form="about"
                     value={formState.about.founderImgUrl ? formState.about.founderImgUrl : ""}
                     onChange={handleChange}
                     ></input>
@@ -133,7 +134,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     rows="10"
                     name="communityPartnersLinkText"
-                    data-form="About"
+                    data-form="about"
                     value={formState.about.communityPartnersLinkText ? formState.about.communityPartnersLinkText : ""}
                     onChange={handleChange}
                     ></textarea>
@@ -143,7 +144,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     <input
                     type="text"
                     name="moreDetailsTitle"
-                    data-form="About"
+                    data-form="about"
                     value={formState.about.moreDetailsTitle ? formState.about.moreDetailsTitle : ""}
                     onChange={handleChange}
                     ></input>
@@ -154,7 +155,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     rows="10"
                     name="moreDetails"
-                    data-form="About"
+                    data-form="about"
                     value={formState.about.moreDetails ? formState.about.moreDetails : ""}
                     onChange={handleChange}
                     ></textarea>
@@ -165,7 +166,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     rows="10"
                     name="governmentVendingLinkText"
-                    data-form="About"
+                    data-form="about"
                     value={formState.about.governmentVendingLinkText ? formState.about.governmentVendingLinkText : ""}
                     onChange={handleChange}
                     ></textarea>
@@ -181,7 +182,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     <input
                     type="text"
                     name="pageTitle"
-                    data-form="CommunityPartners"
+                    data-form="communityPartners"
                     value={formState.communityPartners.pageTitle ? formState.communityPartners.pageTitle : ""}
                     onChange={handleChange}
                     ></input>
@@ -192,7 +193,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     rows="10"
                     name="endBlurb"
-                    data-form="CommunityPartners"
+                    data-form="communityPartners"
                     value={formState.communityPartners.endBlurb ? formState.communityPartners.endBlurb : ""}
                     onChange={handleChange}
                     ></textarea>
@@ -203,7 +204,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     rows="10"
                     name="contactLinkText"
-                    data-form="CommunityPartners"
+                    data-form="communityPartners"
                     value={formState.communityPartners.contactLinkText ? formState.communityPartners.contactLinkText : ""}
                     onChange={handleChange}
                     ></textarea>
@@ -222,10 +223,10 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                         <input
                         type="text"
                         name="orgName"
-                        data-form="CommunityPartnersList"
+                        data-form="communityPartnersList"
                         value={partner.orgName ? partner.orgName : ""}
                         onChange={handleChange}
-                        data-index={index}
+                        data-index={partner.id}
                         ></input>
                     </label><br></br>
                     <label>
@@ -233,10 +234,10 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                         <input
                         type="text"
                         name="orgUrl"
-                        data-form="CommunityPartnersList"
+                        data-form="communityPartnersList"
                         value={partner.orgUrl ? partner.orgUrl : ""}
                         onChange={handleChange}
-                        data-index={index}
+                        data-index={partner.id}
                         ></input>
                     </label><br></br>
                     <label>
@@ -244,10 +245,10 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                         <input
                         type="text"
                         name="orgImgLink"
-                        data-form="CommunityPartnersList"
+                        data-form="communityPartnersList"
                         value={partner.orgImgLink ? partner.orgImgLink : ""}
                         onChange={handleChange}
-                        data-index={index}
+                        data-index={partner.id}
                         ></input>
                     </label><br></br>
                     <label>
@@ -257,10 +258,10 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                         rows="10"
                         cols="80"
                         name="orgBlurb"
-                        data-form="CommunityPartnersList"
+                        data-form="communityPartnersList"
                         value={partner.orgBlurb ? partner.orgBlurb : ""}
                         onChange={handleChange}
-                        data-index={index}
+                        data-index={partner.id}
                         ></textarea>
                     </label><br></br>
                     <button type="button" className="remove" data-target="communityPartnersList" data-id={partner.id} onClick={handleDataDelete}>Remove</button>
@@ -281,7 +282,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     <input
                     type="text"
                     name="pageTitle"
-                    data-form="GovernmentVending"
+                    data-form="governmentVending"
                     value={formState.governmentVending.pageTitle ? formState.governmentVending.pageTitle : ""}
                     onChange={handleChange}
                     ></input>
@@ -292,7 +293,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     rows="10"
                     name="aboutVending"
-                    data-form="GovernmentVending"
+                    data-form="governmentVending"
                     value={formState.governmentVending.aboutVending ? formState.governmentVending.aboutVending : ""}
                     onChange={handleChange}
                     ></textarea>
@@ -303,7 +304,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     rows="10"
                     name="productsIntro"
-                    data-form="GovernmentVending"
+                    data-form="governmentVending"
                     value={formState.governmentVending.productsIntro ? formState.governmentVending.productsIntro : ""}
                     onChange={handleChange}
                     ></textarea>
@@ -314,7 +315,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     type="text"
                     rows="10"
                     name="contactLinkText"
-                    data-form="GovernmentVending"
+                    data-form="governmentVending"
                     value={formState.governmentVending.contactLinkText ? formState.governmentVending.contactLinkText : ""}
                     onChange={handleChange}
                     ></textarea>
@@ -333,7 +334,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                         <input
                         type="text"
                         name="prodName"
-                        data-form="ProductList"
+                        data-form="productList"
                         value={product.prodName ? product.prodName : ""}
                         onChange={handleChange}
                         data-index={index}
@@ -344,7 +345,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                         <input
                         type="text"
                         name="prodImgLink"
-                        data-form="ProductList"
+                        data-form="productList"
                         value={product.prodImgLink ? product.prodImgLink : ""}
                         onChange={handleChange}
                         data-index={index}
@@ -357,7 +358,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                         rows="10"
                         cols="80"
                         name="prodBlurb"
-                        data-form="ProductList"
+                        data-form="productList"
                         value={product.prodBlurb ? product.prodBlurb : ""}
                         onChange={handleChange}
                         data-index={index}
@@ -368,7 +369,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                         <input
                         type="text"
                         name="prodPrice10"
-                        data-form="ProductList"
+                        data-form="productList"
                         value={product.prodPrice10 ? product.prodPrice10 : ""}
                         onChange={handleChange}
                         data-index={index}
@@ -379,7 +380,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                         <input
                         type="text"
                         name="prodPrice50"
-                        data-form="ProductList"
+                        data-form="productList"
                         value={product.prodPrice50 ? product.prodPrice50 : ""}
                         onChange={handleChange}
                         data-index={index}
@@ -390,7 +391,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                         <input
                         type="text"
                         name="prodPrice100"
-                        data-form="ProductList"
+                        data-form="productList"
                         value={product.prodPrice100 ? product.prodPrice100 : ""}
                         onChange={handleChange}
                         data-index={index}
@@ -401,7 +402,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                         <input
                         type="text"
                         name="prodPrice500"
-                        data-form="ProductList"
+                        data-form="productList"
                         value={product.prodPrice500 ? product.prodPrice500 : ""}
                         onChange={handleChange}
                         data-index={index}
@@ -412,7 +413,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                         <input
                         type="text"
                         name="prodPrice1000"
-                        data-form="ProductList"
+                        data-form="productList"
                         value={product.prodPrice1000 ? product.prodPrice1000 : ""}
                         onChange={handleChange}
                         data-index={index}
@@ -425,7 +426,6 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
             </form>
         )
     } else if (page === "Admin") {
-        console.log(formState.admin)
         return (
             <form id="admin" onSubmit={handleSubmit}>
             {formState.admin.map((adminUser, index) => {
@@ -436,7 +436,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                         <input
                         type="text"
                         name="user"
-                        data-form="Admin"
+                        data-form="admin"
                         value={adminUser.user ? adminUser.user : ""}
                         onChange={handleChange}
                         data-index={index}
@@ -445,7 +445,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     
                     {(adminUser.user === user || adminUser.user === null) 
                     && 
-                    <label>Password: <input type="text" name="password" data-form="Admin" value={adminUser.password ? adminUser.password : ""} onChange={handleChange} data-index={index} ></input></label>}
+                    <label>Password: <input type="text" name="password" data-form="admin" value={adminUser.password ? adminUser.password : ""} onChange={handleChange} data-index={index} ></input></label>}
                         
                     <br></br>
                     <button type="button" className="remove" data-target="admin" data-id={adminUser.id} onClick={handleDataDelete}>Remove</button>
@@ -467,7 +467,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     <input
                     type="text"
                     name="email"
-                    data-form="Contact"
+                    data-form="contact"
                     value={formState.contact.email ? formState.contact.email : ""}
                     onChange={handleChange}
                     ></input>
@@ -477,7 +477,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     <input
                     type="text"
                     name="phone"
-                    data-form="Contact"
+                    data-form="contact"
                     value={formState.contact.phone ? formState.contact.phone : ""}
                     onChange={handleChange}
                     ></input>
@@ -487,7 +487,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     <input
                     type="text"
                     name="facebook"
-                    data-form="Contact"
+                    data-form="contact"
                     value={formState.contact.facebook ? formState.contact.facebook : ""}
                     onChange={handleChange}
                     ></input>
@@ -497,7 +497,7 @@ export default function AdminForm({ checkUser, user, logoutAdmin, handleRadioBut
                     <input
                     type="text"
                     name="instagram"
-                    data-form="Contact"
+                    data-form="contact"
                     value={formState.contact.instagram ? formState.contact.instagram : ""}
                     onChange={handleChange}
                     ></input>

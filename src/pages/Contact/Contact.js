@@ -11,7 +11,7 @@ export default function Contact(){
 
     const fetchData = async () => {
         axios
-            .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/contact')
+            .get('https://7w710d6s8g.execute-api.us-west-2.amazonaws.com/contact')
             .then(response => {
                 setContactData(response.data)
             })

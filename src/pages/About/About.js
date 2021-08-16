@@ -22,9 +22,8 @@ export default function About(){
 
     const fetchData = async () => {
         axios
-            .get('https://r3tz0m64u9.execute-api.us-west-2.amazonaws.com/about')
+            .get('https://7w710d6s8g.execute-api.us-west-2.amazonaws.com/about')
             .then(response => {
-                console.log(response.data)
                 setAboutData(response.data)
             })
             .catch(error => console.error(`There was an error retrieving data: ${error}`))
