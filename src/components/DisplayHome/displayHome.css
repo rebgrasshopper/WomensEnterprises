@@ -27,10 +27,24 @@
     margin: 0px 55px 0px 55px;
 }
 
+#middleDiv{
+    display: flex;
+    align-items: center;
+}
+
 .faceImages {
     width: 80vw;
 }
 
 .verticalFaces {
     height: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+    .verticalFaces {
+        display: none;
+    }
+    #middleDiv {
+        padding-bottom: 50px;
+    }
 }

@@ -11,3 +11,13 @@
     max-width: 80vw;
     margin: auto;
 }
+
+@media only screen and (max-width: 600px) {
+    .ProductsDiv, .textContent {
+        margin: 0px;
+        padding: 0px;
+    }
+    .productCard {
+        margin: 0px !important;
+    }
+}

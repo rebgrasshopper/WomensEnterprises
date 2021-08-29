@@ -17,7 +17,7 @@ export default function DisplayHome({homeData}) {
                     </div>
                 </div>
                     {/* <img className="faceImages" src={Faces1} alt="Women's Faces"></img> */}
-                 <div className="textDiv">
+                 <div className="textDiv" id="middleDiv">
                     <img className="verticalFaces" src={Vert1} alt="Women's Faces"></img>
                      <div className="textDivContent">
                         <h1 className="textH1">{homeData.missionTitle}</h1>

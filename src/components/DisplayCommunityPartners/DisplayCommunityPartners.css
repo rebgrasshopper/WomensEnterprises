@@ -25,3 +25,20 @@
 .partnerText {
     width: 50%;
 }
+
+@media only screen and (max-width: 600px) {
+    .partnerCard {
+        flex-direction: column;
+        padding: 0px !important;
+        margin: 10px 0px 10px 0px;
+    }
+
+    .partnerImg {
+        height: 100px !important;
+        margin: 10px 0px 10px 0px !important;
+    }
+
+    .partnerText {
+        width: 90%;
+    }
+}

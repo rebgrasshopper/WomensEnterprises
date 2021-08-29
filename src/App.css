@@ -42,3 +42,18 @@
 .textContent {
   margin-top: 20px;
 }
+
+
+@media only screen and (max-width: 600px) {
+  h1, h2 {
+      font-size: larger;
+  }
+  html {
+    font-size: small !important;
+  }
+
+  .textContent {
+    padding: 2px;
+    margin: 2px !important;
+  }
+}
