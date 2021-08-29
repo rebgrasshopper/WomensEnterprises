@@ -18,7 +18,7 @@ export default function Nav() {
         <nav className="navbar navbar-fixed-top">
         <div className="container-fluid">
             <div className="navbar-header">
-                <a className="navbar-brand" href="/"><img src={Logo} alt="Women's Enterprises Logo"></img></a>
+                <a className="navbar-brand" href="/"><img src={Logo} alt="Women's Enterprises Trust Logo"></img></a>
                 <span id="logoSubtitle">Supporting Women's Business</span>
             </div>
             <ul className="nav navbar-nav d-flex flex-row">

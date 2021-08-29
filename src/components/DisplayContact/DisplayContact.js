@@ -15,18 +15,30 @@ export default function DisplayContact({ContactData}) {
                     <h1 className="textH1">Get In Touch!</h1>
                 </div>
                 {ContactData.instagram && <div className="contactButtons">
-                    <Link to='#' onClick={(e) => {window.location = `mailto:${ContactData.email}`}}>
-                        <img className = "contactIcon" src={EmailIcon} alt="envelope symbol"></img>
-                    </Link>
-                    <Link to={ContactData.phone}>
-                        <img className = "contactIcon" src={PhoneIcon} alt="phone symbol"></img>
-                    </Link>
-                    <a href={ContactData.facebook}>
-                        <img className = "contactIcon" src={FacebookIcon} alt="facebook symbol"></img>
-                    </a>
-                    <a href={ContactData.instagram}>
-                        <img className = "contactIcon" src={InstagramIcon} alt="instagram symbol"></img>
-                    </a>
+                    <div className="entireContactType">
+                        <Link className="contactLink" to='#' onClick={(e) => {window.location = `mailto:${ContactData.email}`}}>
+                            <img className = "contactIcon" src={EmailIcon} alt="envelope symbol"></img>
+                            <div id="email" className="contactInfoDiv">{ContactData.email}</div>
+                        </Link>
+                    </div>
+                    <div className="entireContactType">
+                        <Link className="contactLink" to={ContactData.phone}>
+                            <img className = "contactIcon" src={PhoneIcon} alt="phone symbol"></img>
+                            <div id="phone" className="contactInfoDiv">{ContactData.phone}</div>
+                        </Link>
+                    </div>
+                    <div className="entireContactType">
+                        <a className="contactLink" href={ContactData.facebook}>
+                            <img className = "contactIcon" src={FacebookIcon} alt="facebook symbol"></img>
+                            <div id="facebook" className="contactInfoDiv">{"Women's Enterprises Trust"}</div>
+                        </a>
+                    </div>
+                    <div className="entireContactType">
+                        <a className="contactLink" href={ContactData.instagram}>
+                            <img className = "contactIcon" src={InstagramIcon} alt="instagram symbol"></img>
+                            <div id="email" className="contactInfoDiv">{ContactData.instagram.replace("https://www.instagram.com/","").replace("/", "")}</div>
+                        </a>
+                    </div>
                 </div>    }
             </div>
             )

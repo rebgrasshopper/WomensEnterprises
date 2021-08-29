@@ -1,9 +1,9 @@
 #DisplayContact {
     margin: 0px 15px 0px 15px;
     padding: 0px;
+    padding-bottom: 68px;
     text-align: center;
     background-color: var(--foreground) !important;
-    height: 80vh;
 }
 
 .contactJumbo {
@@ -23,5 +23,24 @@
 .contactButtons img {
     max-width: 10vw;
     width: 200px;
-    margin: auto;
+    float: left
+}
+
+.entireContactType {
+    display: flex;
+    align-items: center;
+    margin: 3px;
+}
+
+.contactInfoDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.contactLink {
+    display: flex;
+    align-items: center;
+    color: black;
 }

@@ -25,7 +25,7 @@ function Footer(){
 
     return (
         <footer>
-            <p id="copyright">© Women's Enterprises 2021</p>
+            <p id="copyright">© Women's Enterprises Trust 2021</p>
             <div id="socialMedia">
                 <button id="FB">{contactInfo.facebook && <a href={contactInfo.facebook} target="_blank"
                         rel="noreferrer"><img src={Facebook} alt="facebook icon" /></a>}</button>
